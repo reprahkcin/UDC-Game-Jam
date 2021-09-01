@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CanvasManager : MonoBehaviour
 {
-
-
     // Keep track of all canvases
     public Canvas[] canvases;
 
@@ -15,15 +13,19 @@ public class CanvasManager : MonoBehaviour
     // Keep track of the current canvas index
     public int currentCanvasIndex;
 
-    public void NextCanvas(){
+    public void NextCanvas()
+    {
         // Deactivate the current canvas
         currentCanvas.gameObject.SetActive(false);
 
         // If current canvas index is less than the length of the canvases array
-        if(currentCanvasIndex < canvases.Length - 1){
+        if (currentCanvasIndex < canvases.Length - 1)
+        {
             // Increment the current canvas index
             currentCanvasIndex++;
-        } else {
+        }
+        else
+        {
             // Set the current canvas index to 0
             currentCanvasIndex = 0;
         }
@@ -31,18 +33,21 @@ public class CanvasManager : MonoBehaviour
         // Activate the next canvas
         currentCanvas = canvases[currentCanvasIndex];
         currentCanvas.gameObject.SetActive(true);
-    
     }
 
-    public void PreviousCanvas(){
+    public void PreviousCanvas()
+    {
         // Deactivate the current canvas
         currentCanvas.gameObject.SetActive(false);
 
         // If current canvas index is greater than 0
-        if(currentCanvasIndex > 0){
+        if (currentCanvasIndex > 0)
+        {
             // Decrement the current canvas index
             currentCanvasIndex--;
-        } else {
+        }
+        else
+        {
             // Set the current canvas index to the length of the canvases array
             currentCanvasIndex = canvases.Length - 1;
         }
@@ -52,7 +57,8 @@ public class CanvasManager : MonoBehaviour
         currentCanvas.gameObject.SetActive(true);
     }
 
-    public void SetCanvas(int index){
+    public void SetCanvas(int index)
+    {
         // Deactivate the current canvas
         currentCanvas.gameObject.SetActive(false);
 
@@ -62,11 +68,20 @@ public class CanvasManager : MonoBehaviour
         // Activate the canvas at the current canvas index
         currentCanvas = canvases[currentCanvasIndex];
         currentCanvas.gameObject.SetActive(true);
-
     }
 
-    void Start(){
+    void Start()
+    {
+        // Deactivate all canvases
+        foreach (Canvas canvas in canvases)
+        {
+            canvas.gameObject.SetActive(false);
+        }
+
         // Set the current canvas to the currentCanvasIndex
         currentCanvas = canvases[currentCanvasIndex];
+
+        // Activate the current canvas
+        currentCanvas.gameObject.SetActive(true);
     }
 }
