@@ -4,25 +4,29 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // Float for moveSpeed
     public float moveSpeed = 5f;
 
+    // add a Rigidbody2D for player in the inspector
     public Rigidbody2D rb;
 
-    public Camera cam;
-
+    // Vector2 for movement
     Vector2 movement;
 
-    Vector2 mousePos;
+    void Start()
+    {
+        // get the Rigidbody2D component
+        rb = GetComponent<Rigidbody2D>();
+    }
 
-    // Update is called once per frame
     void Update()
     {
-        // Get the horizontal and vertical axis
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
+        // get the horizontal and vertical axis
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
 
-        // Get current position of mouse
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        // Create the movement vector and normalize it
+        movement = new Vector2(x, y).normalized;
     }
 
     void FixedUpdate()
@@ -31,20 +35,5 @@ public class PlayerMovement : MonoBehaviour
         rb
             .MovePosition(rb.position +
             movement * moveSpeed * Time.fixedDeltaTime);
-
-        //Restrict player to camera
-        Vector3 viewPos = cam.WorldToViewportPoint(transform.position);
-        viewPos.x = Mathf.Clamp01(viewPos.x);
-        viewPos.y = Mathf.Clamp01(viewPos.y);
-        transform.position = cam.ViewportToWorldPoint(viewPos);
-
-        // Look at the mouse
-        Vector2 lookDir = mousePos - rb.position;
-
-        // Get angle between player and mouse
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-
-        // Rotate player
-        rb.rotation = angle;
     }
 }
