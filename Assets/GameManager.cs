@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     // Start with this many rats
     public int startRats = 5;
 
-    public void SpawnRat()
+    public void SpawnRate()
     {
         // Get random spawn point
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         // Spawn initial rats
         for (int i = 0; i < startRats; i++)
         {
-            SpawnRat();
+            SpawnRate();
         }
     }
 
