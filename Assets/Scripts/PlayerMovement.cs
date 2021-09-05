@@ -4,40 +4,40 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Player Health
-    private int health = 100;
-
-    public void SetHealth(int health)
-    {
-        this.health = health;
-    }
-
+    // -------------------------------------------------
+    // Player Components
+    // --------------------------------------------------
     // Get Collider
     public Collider2D collider;
 
-    // Float for moveSpeed
-    public float moveSpeed = 5f;
-
-    // add a Rigidbody2D for player in the inspector
+    // Get Rigidbody
     public Rigidbody2D rb;
 
     // Get Animator component
     public Animator animator;
 
+    // Float for moveSpeed
+    public float moveSpeed = 5f;
+
+    // -------------------------------------------------
+    // Assorted Variables
+    // --------------------------------------------------
     // Vector2 for movement
     Vector2 movement;
 
-    // Getter and Sfor health
+    // -------------------------------------------------
+    // Methods
+    // --------------------------------------------------
     void Start()
     {
+        // get the Collider2D component
+        collider = GetComponent<Collider2D>();
+
         // get the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
 
         // get the Animator component
         animator = GetComponent<Animator>();
-
-        // get the Collider2D component
-        collider = GetComponent<Collider2D>();
     }
 
     void Update()
@@ -65,17 +65,5 @@ public class PlayerMovement : MonoBehaviour
         rb
             .MovePosition(rb.position +
             movement * moveSpeed * Time.fixedDeltaTime);
-    }
-
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.tag == "Hot Dog")
-        {
-            // Add health
-            this.health += other.gameObject.GetComponent<PowerUp>().healthBuff;
-
-            // Destroy hot dog
-            Destroy(other.gameObject);
-        }
     }
 }

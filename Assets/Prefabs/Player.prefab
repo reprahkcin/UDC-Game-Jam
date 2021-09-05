@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5229670387992852579}
   - component: {fileID: 5229670387992852576}
   - component: {fileID: 5229670387992852577}
+  - component: {fileID: 3562109757316483725}
   - component: {fileID: 5229670387992852582}
   - component: {fileID: 5229670387992852578}
-  - component: {fileID: 3562109757316483725}
+  - component: {fileID: 5933988518562696146}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -107,6 +108,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &3562109757316483725
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5229670387992852583}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.011203051, y: -0.4145228}
+  serializedVersion: 2
+  m_Radius: 0.30539462
 --- !u!114 &5229670387992852582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,9 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e676c797b2c2104da5f09b44d5727e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  collider: {fileID: 0}
   rb: {fileID: 5229670387992852577}
   animator: {fileID: 0}
+  moveSpeed: 5
 --- !u!95 &5229670387992852578
 Animator:
   serializedVersion: 3
@@ -141,19 +159,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!58 &3562109757316483725
-CircleCollider2D:
+--- !u!114 &5933988518562696146
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5229670387992852583}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.011203051, y: -0.4145228}
-  serializedVersion: 2
-  m_Radius: 0.30539462
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788ca6b2872f3ff42aa1724628880e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponCollider: {fileID: 0}
+  health: 100
+  damage: 10
+  speed: 5
+  defense: 10
