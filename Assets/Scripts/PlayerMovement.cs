@@ -53,20 +53,59 @@ public class PlayerMovement : MonoBehaviour
     // Create the movement vector and normalize it
     movement = new Vector2(x, y).normalized;
 
-    // Set horizontal animator parameter to horizontal movement
-    animator.SetFloat("Horizontal", movement.x);
-
-    // Set vertical animator parameter to vertical movement
-    animator.SetFloat("Vertical", movement.y);
-
     // Set speed animator parameter to movement magnitude
     animator.SetFloat("Speed", movement.magnitude);
 
-    // If space is pressed
-    if (Input.GetKeyDown(KeyCode.Space))
+    // If x is less than 0
+    if (x < 0)
     {
-      // Set trigger for "Sword_Attack_Right"
-      weaponAnimator.SetTrigger("Sword_Attack_Right");
+      animator.SetFloat("Horizontal", -1f);
+      animator.SetFloat("Vertical", 0f);
+      weaponAnimator.SetFloat("dirX", -1f);
+      weaponAnimator.SetFloat("dirY", 0f);
+    } // If x is greater than 0
+    else if (x > 0)
+    {
+      animator.SetFloat("Horizontal", 1f);
+      animator.SetFloat("Vertical", 0f);
+      weaponAnimator.SetFloat("dirX", 1f);
+      weaponAnimator.SetFloat("dirY", 0f);
+    }
+
+    // If y is less than 0
+    if (y < 0)
+    {
+      animator.SetFloat("Vertical", -1f);
+      animator.SetFloat("Horizontal", 0f);
+      weaponAnimator.SetFloat("dirY", -1f);
+      weaponAnimator.SetFloat("dirX", 0f);
+    } // If y is greater than 0
+    else if (y > 0)
+    {
+      animator.SetFloat("Vertical", 1f);
+      animator.SetFloat("Horizontal", 0f);
+      weaponAnimator.SetFloat("dirY", 1f);
+      weaponAnimator.SetFloat("dirX", 0f);
+    }
+
+    // If mouse button is pressed
+    if (Input.GetMouseButtonDown(0))
+    {
+      // Set weapon animator trigger to attack
+      weaponAnimator.SetTrigger("Attack");
+      animator.SetTrigger("Attack");
+    }
+
+    // If the float speed is greater than 0
+    if (movement.magnitude > 0)
+    {
+      // set animator bool isMoving to true
+      animator.SetBool("isMoving", true);
+    }
+    else
+    {
+      // set animator bool isMoving to false
+      animator.SetBool("isMoving", false);
     }
   }
 

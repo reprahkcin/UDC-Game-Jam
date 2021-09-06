@@ -4,50 +4,48 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // ------------------------------------------------------------------------
-    // Enemy Stats
-    // ------------------------------------------------------------------------
+  // ------------------------------------------------------------------------
+  // Enemy Stats
+  // ------------------------------------------------------------------------
+  // Enemy Health
+  private int health = 100;
 
-    // Enemy Health
-    public int health = 100;
+  // Enemy Damage
+  public int damage = 10;
 
-    // Enemy Damage
-    public int damage = 10;
+  // Enemy Speed
+  public float speed = 10f;
 
-    // Enemy Speed
-    public float speed = 10f;
+  // ------------------------------------------------------------------------
+  // Methods
+  // ------------------------------------------------------------------------
+  // Get Enemy Damage
+  public int GetDamage()
+  {
+    return damage;
+  }
 
-    // ------------------------------------------------------------------------
-    // Methods
-    // ------------------------------------------------------------------------
-
-    // Get Enemy Damage
-    public int GetDamage()
+  // Take damage - Called from player
+  public void TakeDamage(int damage)
+  {
+    health -= damage;
+    if (health <= 0)
     {
-        return damage;
+      Die();
     }
+  }
 
-    // Take damage - Called from player
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
+  void Die()
+  {
+    Destroy (gameObject);
+  }
 
-    void Die()
+  void Update()
+  {
+    // If health is less than 0, destroy the enemy
+    if (health <= 0)
     {
-        Destroy (gameObject);
+      Destroy (gameObject);
     }
-
-    void Update()
-    {
-        // If health is less than 0, destroy the enemy
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+  }
 }
