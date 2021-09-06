@@ -318,6 +318,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   rb: {fileID: 5229670387992852577}
   animator: {fileID: 0}
+  weaponAnimator: {fileID: 223692176492412963}
   moveSpeed: 5
 --- !u!95 &5229670387992852578
 Animator:
