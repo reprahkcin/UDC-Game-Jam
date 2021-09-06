@@ -134,6 +134,18 @@ TextureImporter:
   - first:
       213: -5413523621558687431
     second: Rat_Splat
+  - first:
+      213: 2212059921545470492
+    second: Golf Club
+  - first:
+      213: 448843124606433932
+    second: Shovel
+  - first:
+      213: -7364446065119195840
+    second: Rake
+  - first:
+      213: -8443205175241295870
+    second: Raw Dog
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -385,69 +397,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Range_Attack_Side_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 960
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 148e95dfe6b226cb0800000000000000
-      internalID: -4872284091164530623
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Range_Attack_Side_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 960
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 71f5c480b4eb51a30800000000000000
-      internalID: 4185460658181791511
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Range_Attack_Side_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 960
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ddd91672f7b079f00800000000000000
-      internalID: 1123379272801689053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Idle_Side
       rect:
         serializedVersion: 2
@@ -473,7 +422,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 928
+        y: 960
         width: 32
         height: 32
       alignment: 0
@@ -494,7 +443,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 928
+        y: 960
         width: 32
         height: 32
       alignment: 0
@@ -515,7 +464,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 928
+        y: 960
         width: 32
         height: 32
       alignment: 0
@@ -658,69 +607,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Range_Attack_Up_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 864
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c350cc69c16e75e70800000000000000
-      internalID: 9103998182216172860
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Range_Attack_Up_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 864
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c2bf515e07ec13960800000000000000
-      internalID: 7580066632116337452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Range_Attack_Up_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 864
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4ebdb0f36a2705bd0800000000000000
-      internalID: -2643486922918601756
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Idle_Up
       rect:
         serializedVersion: 2
@@ -746,7 +632,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 832
+        y: 864
         width: 32
         height: 32
       alignment: 0
@@ -767,7 +653,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 832
+        y: 864
         width: 32
         height: 32
       alignment: 0
@@ -788,7 +674,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 832
+        y: 864
         width: 32
         height: 32
       alignment: 0
@@ -931,69 +817,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Range_Attack_Down_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 768
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c6f42c206fbff0a50800000000000000
-      internalID: 6489682622090989420
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Range_Attack_Down_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 768
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7cbb3b1622ff4f00800000000000000
-      internalID: 1103366679208639613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Range_Attack_Down_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 768
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3f686009012e6460800000000000000
-      internalID: 7236757973776232255
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Idle_Down
       rect:
         serializedVersion: 2
@@ -1019,7 +842,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 736
+        y: 768
         width: 32
         height: 32
       alignment: 0
@@ -1040,7 +863,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 736
+        y: 768
         width: 32
         height: 32
       alignment: 0
@@ -1061,7 +884,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 736
+        y: 768
         width: 32
         height: 32
       alignment: 0
@@ -1086,7 +909,7 @@ TextureImporter:
         width: 12
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1107,7 +930,7 @@ TextureImporter:
         width: 5
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1128,7 +951,7 @@ TextureImporter:
         width: 5
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1149,7 +972,7 @@ TextureImporter:
         width: 5
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1170,7 +993,7 @@ TextureImporter:
         width: 12
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1178,6 +1001,90 @@ TextureImporter:
       bones: []
       spriteID: 939eec1c2fc4fd4b0800000000000000
       internalID: -5413523621558687431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golf Club
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 992
+        width: 3
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c12a89557c0d2be10800000000000000
+      internalID: 2212059921545470492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shovel
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 992
+        width: 5
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8afa0a917c9a3600800000000000000
+      internalID: 448843124606433932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rake
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 992
+        width: 7
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04d0c01825b3cc990800000000000000
+      internalID: -7364446065119195840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raw Dog
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 1011
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 208b00c80a5b3da80800000000000000
+      internalID: -8443205175241295870
       vertices: []
       indices: 
       edges: []
