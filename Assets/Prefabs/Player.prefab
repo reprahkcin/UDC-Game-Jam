@@ -145,7 +145,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
@@ -173,11 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4f7021ae88b544d917414b7e4adb58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponCollider: {fileID: 0}
-  health: 100
-  damage: 10
-  speed: 5
-  defense: 10
+  swordDamage: 10
 --- !u!1 &5229670387992852583
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,12 +184,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5229670387992852579}
   - component: {fileID: 5229670387992852576}
+  - component: {fileID: 5229670387992852578}
   - component: {fileID: 5229670387992852577}
   - component: {fileID: 3562109757316483725}
   - component: {fileID: 5229670387992852582}
-  - component: {fileID: 5229670387992852578}
   - component: {fileID: 5933988518562696146}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -255,7 +251,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -3289761148442720871, guid: f6cdd333b0d7a99428574f0d0cde3ff7, type: 3}
+  m_Sprite: {fileID: 6211104642775156530, guid: f6cdd333b0d7a99428574f0d0cde3ff7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -266,6 +262,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5229670387992852578
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5229670387992852583}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 438d768fbc5fc734cbe32d7a6c438297, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &5229670387992852577
 Rigidbody2D:
   serializedVersion: 4
@@ -315,30 +330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e676c797b2c2104da5f09b44d5727e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 0}
-  rb: {fileID: 5229670387992852577}
-  animator: {fileID: 0}
   weaponAnimator: {fileID: 223692176492412963}
   moveSpeed: 5
---- !u!95 &5229670387992852578
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5229670387992852583}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 438d768fbc5fc734cbe32d7a6c438297, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5933988518562696146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,8 +344,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788ca6b2872f3ff42aa1724628880e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponCollider: {fileID: 0}
-  health: 100
-  damage: 10
-  speed: 5
-  defense: 10

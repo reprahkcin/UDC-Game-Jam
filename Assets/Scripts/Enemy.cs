@@ -4,48 +4,85 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-  // ------------------------------------------------------------------------
-  // Enemy Stats
-  // ------------------------------------------------------------------------
-  // Enemy Health
-  private int health = 100;
+    // ------------------------------------------------------------------------
+    // GameObjects
+    // ------------------------------------------------------------------------
 
-  // Enemy Damage
-  public int damage = 10;
+    // SpriteRenderer
+    private SpriteRenderer spriteRenderer;
 
-  // Enemy Speed
-  public float speed = 10f;
+    // Dead sprite
+    // TODO: Add this in the inspector
+    public Sprite deadSprite;
 
-  // ------------------------------------------------------------------------
-  // Methods
-  // ------------------------------------------------------------------------
-  // Get Enemy Damage
-  public int GetDamage()
-  {
-    return damage;
-  }
+    // Hunt Player script
+    public HuntPlayer huntPlayer;
 
-  // Take damage - Called from player
-  public void TakeDamage(int damage)
-  {
-    health -= damage;
-    if (health <= 0)
+    // ------------------------------------------------------------------------
+    // Enemy Stats
+    // ------------------------------------------------------------------------
+
+    // Enemy Health
+    private int health = 100;
+
+    // ------------------------------------------------------------------------
+    // Methods
+    // ------------------------------------------------------------------------
+
+    // Get Enemy Health
+    public int GetHealth()
     {
-      Die();
+        return health;
     }
-  }
 
-  void Die()
-  {
-    Destroy (gameObject);
-  }
-
-  void Update()
-  {
-    // If health is less than 0, destroy the enemy
-    if (health <= 0)
+    // Take damage - Called from player
+    public void DamageEnemy(int damage)
     {
-      Destroy (gameObject);
+        health -= damage;
     }
-  }
+
+    // ------------------------------------------------------------------------
+    // Unity Methods
+    // ------------------------------------------------------------------------
+
+    private void Start()
+    {
+        // Get SpriteRenderer
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Get HuntPlayer script
+        huntPlayer = GetComponent<HuntPlayer>();
+    }
+
+    void Update()
+    {
+        if (health <= 0)
+        {
+            // Call ToggleMovement() on HuntPlayer script
+            huntPlayer.ToggleMovement();
+            // Start DeathTimer coroutine
+            StartCoroutine(DeathTimer());
+        }
+
+    }
+
+    // ------------------------------------------------------------------------
+    // Timers
+    // ------------------------------------------------------------------------
+
+    // Timer for death
+    IEnumerator DeathTimer()
+    {
+
+
+        // Change the sprite to dead
+        spriteRenderer.sprite = deadSprite;
+
+        // Wait for death
+        yield return new WaitForSeconds(3);
+
+        // Destroy gameObject
+        Destroy(gameObject);
+    }
+
 }

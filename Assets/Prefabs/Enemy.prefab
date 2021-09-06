@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8229883490984176260}
   - component: {fileID: 8229883490984176263}
-  - component: {fileID: 8229883490984176262}
-  - component: {fileID: 8229883490984176258}
   - component: {fileID: 8229883490984176261}
   - component: {fileID: -8294916008492668859}
   - component: {fileID: 4913433672688118565}
+  - component: {fileID: 498082690}
+  - component: {fileID: -3608529812045394500}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -358718286139166009, guid: f6cdd333b0d7a99428574f0d0cde3ff7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -87,39 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8229883490984176262
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8229883490984176265}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8ee35da096cd7c14ab5753a785a6c1d7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8229883490984176258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8229883490984176265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a1c5a0968c6dc048b22ebd0d6a0ae8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  speed: 1
 --- !u!50 &8229883490984176261
 Rigidbody2D:
   serializedVersion: 4
@@ -169,6 +136,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b566b8245cfe3147bdb30d2e8c22632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  damage: 10
-  speed: 10
+  deadSprite: {fileID: -5413523621558687431, guid: f6cdd333b0d7a99428574f0d0cde3ff7, type: 3}
+  huntPlayer: {fileID: 498082690}
+--- !u!114 &498082690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229883490984176265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaaf5bb47f428e6408f25d0756100ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 8229883490984176261}
+  minSpeed: 0.18
+  maxSpeed: 1.78
+  isMoving: 1
+--- !u!114 &-3608529812045394500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229883490984176265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415f38f45458aeb498c9849facac4525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 46
