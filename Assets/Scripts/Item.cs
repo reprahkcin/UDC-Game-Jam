@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+  // ---------------------------------------------------
+  // GameObject Connections
+  // ---------------------------------------------------
   // Get the player object
   public GameObject player;
 
+
+  // ---------------------------------------------------
+  // Item Variables
+  // ---------------------------------------------------
   private int healthBuff = 15;
 
   private int damageBuff = 0;
@@ -15,7 +22,9 @@ public class Item : MonoBehaviour
 
   private int defenseBuff = 0;
 
-  // Start is called before the first frame update
+
+
+
   void Start()
   {
     // Get the player object
@@ -43,5 +52,16 @@ public class Item : MonoBehaviour
   public int getDefenseBuff()
   {
     return defenseBuff;
+  }
+
+  // -----------------------------------------------------
+  // Constructors
+  // -----------------------------------------------------
+  public Item(int healthBuff, int damageBuff, int speedBuff, int defenseBuff)
+  {
+    this.healthBuff = healthBuff;
+    this.damageBuff = damageBuff;
+    this.speedBuff = speedBuff;
+    this.defenseBuff = defenseBuff;
   }
 }
