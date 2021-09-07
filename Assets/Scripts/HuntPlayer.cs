@@ -34,6 +34,8 @@ public class HuntPlayer : MonoBehaviour
     // bool isMoving
     public bool isMoving = true;
 
+    public bool isAttacked = false;
+
     // ------------------------------------------------------------------------
     // Methods
     // ------------------------------------------------------------------------
@@ -72,16 +74,22 @@ public class HuntPlayer : MonoBehaviour
     void Update()
     {
         // If the enemy is moving
-        if (isMoving)
+        if (isMoving && !isAttacked)
         {
             // Face the player
             FacePlayer();
             // Move Enemy forward at speed
             rb.velocity = transform.up * speed;
         }
+        else if (isMoving && isAttacked)
+        {
+            rb.velocity = transform.up * -30;
+            // Start coroutine to reset isAttacked
+            StartCoroutine(Wait());
+        }
 
         // If the enemy is not moving
-        else
+        else if (!isMoving)
         {
             // Make rigidbody not simulated
             rb.simulated = false;
@@ -90,5 +98,15 @@ public class HuntPlayer : MonoBehaviour
             GetComponent<SpriteRenderer>().sortingOrder = 1;
 
         }
+    }
+
+    // ------------------------------------------------------------------------
+    // Timer
+    // ------------------------------------------------------------------------
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isAttacked = false;
     }
 }

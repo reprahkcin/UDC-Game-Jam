@@ -71,12 +71,12 @@ public class GameManager : MonoBehaviour
     // Current enemy count
     private int currentEnemyCount = 0;
 
-    // Current item count
-    private int currentItemCount = 0;
-
     // Score
     // TODO: Add score incrementer to Enemy Script
     //private int score = 0;
+
+    // Bool to trigger item spawn
+    private bool spawnItem = false;
 
     // -------------------------------------------------
     // Unity Functions
@@ -102,66 +102,73 @@ public class GameManager : MonoBehaviour
             // Instantiate player at the center of the screen
             Instantiate(player, Vector3.zero, Quaternion.identity);
         }
+
+
     }
 
-    public void StartRound()
+    private void Update()
     {
-        // If the current wave is less than the number of waves
-        if (currentWave < waves)
+        // if Player clicks right mouse button, set spawnItem to true
+        if (Input.GetMouseButtonDown(1))
         {
-            // Spawn enemies
-            StartCoroutine(SpawnWave());
-
-            // Spawn Items
-            StartCoroutine(SpawnItems());
+            spawnItem = true;
         }
+
+        // If spawnItem is true, spawn an item
+        if (spawnItem)
+        {
+            SpawnItem();
+            spawnItem = false;
+        }
+
+    }
+
+    public void StartGame()
+    {
+        // Start wave
+        StartCoroutine(SpawnWave());
     }
 
     // -------------------------------------------------
-    // Custom Functions
+    // Timer Functions
     // -------------------------------------------------
-    // Spawns a wave of enemies
+
+    // Spawn wave of enemies
     IEnumerator SpawnWave()
     {
+
         // Spawn enemies
         for (int i = 0; i < enemiesPerWave; i++)
         {
-            // Spawn enemy
-            SpawnEnemy();
+            // Get random enemy
+            int randomEnemy = Random.Range(0, enemyPrefabs.Length);
 
+            // Get random spawn point
+            int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
+
+            // Instantiate enemy
+            GameObject enemy = Instantiate(enemyPrefabs[randomEnemy], spawnPoints[randomSpawnPoint].position, Quaternion.identity);
+
+            // Add enemy to list
+            enemies.Add(enemy);
             // Wait for spawn timer
             yield return new WaitForSeconds(spawnTimer);
         }
+
 
         // Increment wave
         currentWave++;
-
-        // Increment enemy count
-        currentEnemyCount += enemiesPerWave;
     }
 
-    IEnumerator SpawnItems()
+    private IEnumerator Timer(float time)
     {
-        // Spawn items
-        for (int i = 0; i < itemsPerWave; i++)
-        {
-            // Spawn item
-            SpawnItem();
-
-            // Wait for spawn timer
-            yield return new WaitForSeconds(spawnTimer);
-        }
-
-        // Increment item count
-        currentItemCount += itemsPerWave;
+        yield return new WaitForSeconds(time);
     }
 
-    // Coroutine for SpawnTimer
-    IEnumerator SpawnTimer()
-    {
-        // Wait for spawn timer
-        yield return new WaitForSeconds(spawnTimer);
-    }
+
+    // -------------------------------------------------
+    // Spawn Functions
+    // -------------------------------------------------
 
     // Spawns an enemy
     void SpawnEnemy()

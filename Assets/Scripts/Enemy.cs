@@ -18,12 +18,18 @@ public class Enemy : MonoBehaviour
     // Hunt Player script
     public HuntPlayer huntPlayer;
 
+    // Enemy Rigidbody 2D
+    private Rigidbody2D rb;
+
     // ------------------------------------------------------------------------
     // Enemy Stats
     // ------------------------------------------------------------------------
 
     // Enemy Health
-    private int health = 100;
+    private int health = 50;
+
+    // Point Value
+    public int pointValue = 10;
 
     // ------------------------------------------------------------------------
     // Methods
@@ -41,6 +47,12 @@ public class Enemy : MonoBehaviour
         health -= damage;
     }
 
+    // Knock Enemy Back
+    public void KnockBackEnemy(float knockBackForce)
+    {
+        rb.AddForce(new Vector2(knockBackForce, 0));
+    }
+
     // ------------------------------------------------------------------------
     // Unity Methods
     // ------------------------------------------------------------------------
@@ -52,6 +64,9 @@ public class Enemy : MonoBehaviour
 
         // Get HuntPlayer script
         huntPlayer = GetComponent<HuntPlayer>();
+
+        // Get Rigidbody2D
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()

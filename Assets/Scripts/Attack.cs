@@ -11,8 +11,8 @@ public class Attack : MonoBehaviour
     // Player
     private GameObject player;
 
-    // 2D collider
-    private Collider2D attackCollider;
+    // 2D Collider
+    private Collider2D collider;
 
     // -------------------------------------------------
     // Variables
@@ -39,7 +39,7 @@ public class Attack : MonoBehaviour
     void Start()
     {
         // Set attack collider
-        attackCollider = GetComponent<Collider2D>();
+        collider = GetComponent<Collider2D>();
 
         // Set player
         player = GameObject.FindGameObjectWithTag("Player");

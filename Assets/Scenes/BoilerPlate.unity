@@ -548,7 +548,7 @@ Transform:
   m_GameObject: {fileID: 103279602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.29, y: 1.29, z: 1.29}
+  m_LocalScale: {x: 0.2075, y: 0.2075, z: 0.21757}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -1579,7 +1579,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481913746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.31, y: -4.18, z: 0}
+  m_LocalPosition: {x: 4.74, y: -3.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1988,7 +1988,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688137751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.82, y: 3.79, z: 0}
+  m_LocalPosition: {x: -4.68, y: 2.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2517,7 +2517,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1856189970}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartRound
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2857,7 +2857,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920419008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.73, y: -4.09, z: 0}
+  m_LocalPosition: {x: -5.03, y: -3.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4297,8 +4297,8 @@ MonoBehaviour:
   - {fileID: 1989412159}
   - {fileID: 920419009}
   - {fileID: 481913747}
-  spawnTimer: 0.94
-  enemiesPerWave: 10
+  spawnTimer: 2.18
+  enemiesPerWave: 77
   itemTimer: 5
   itemsPerWave: 5
   waves: 5
@@ -4609,7 +4609,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989412158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.75, y: 3.59, z: 0}
+  m_LocalPosition: {x: 2.53, y: 3.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

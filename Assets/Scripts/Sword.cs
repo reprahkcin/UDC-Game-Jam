@@ -9,7 +9,10 @@ public class Sword : MonoBehaviour
     private BoxCollider2D swordCollider;
 
     // Damage the sword does
-    public int swordDamage = 10;
+    public int swordDamage = 50;
+
+    // Knock back force
+    public float knockBackForce = 10f;
 
     void Start()
     {
@@ -26,6 +29,9 @@ public class Sword : MonoBehaviour
         {
             // Decrease Enemy Health
             other.gameObject.GetComponent<Enemy>().DamageEnemy(swordDamage);
+
+            // knock back enemy
+            other.gameObject.GetComponent<HuntPlayer>().isAttacked = true;
         }
     }
 }
