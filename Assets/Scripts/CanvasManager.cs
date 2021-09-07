@@ -11,6 +11,12 @@ public class CanvasManager : MonoBehaviour
     // Keep track of all canvases
     public Canvas[] canvases;
 
+    // GameManager
+    public GameManager gameManager;
+
+    // HealthBar
+    public HealthBar healthBar;
+
     // ------------------------------------------------------------
     // State Variables
     // ------------------------------------------------------------
@@ -24,8 +30,12 @@ public class CanvasManager : MonoBehaviour
     // UI Connections
     // TODO: Add these in the inspector (from HUD canvas)
     // -------------------------------------------------
-    // Get UI Text for health display
-    public TextMeshProUGUI healthText;
+
+    // Get UI Text for score display
+    public TextMeshProUGUI scoreText;
+
+    // Get Player Health
+    public int playerHealth;
 
 
     // ------------------------------------------------------------
@@ -39,8 +49,25 @@ public class CanvasManager : MonoBehaviour
             // Get player
             GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-            // Update the health UI
-            healthText.text = "Health: " + player.GetComponent<Player>().GetHealth();
+            // Update the score UI
+            scoreText.text = "Score: " + gameManager.GetComponent<GameManager>().GetScore();
+
+            // Get player health
+            playerHealth = player.GetComponent<Player>().GetHealth();
+            // If player health is more than 100
+            if (playerHealth > 100)
+            {
+                // Set player health to 100
+                playerHealth = 100;
+            }
+            // if player health is less than 0
+            if (playerHealth < 0)
+            {
+                // Set player health to 0
+                playerHealth = 0;
+            }
+            // Update the health bar
+            healthBar.UpdateHealthBar(playerHealth / 100f);
 
         }
     }

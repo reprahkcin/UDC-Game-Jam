@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     // Health
     private int health = 100;
 
+    // Player movement script
+    private PlayerMovement playerMovement;
 
     // -------------------------------------------------
     // UI Getters
@@ -56,11 +58,28 @@ public class Player : MonoBehaviour
         // Subtract damage from health
         health -= damage;
 
+        // If health is more than 100, set it to 100
+        if (health > 100)
+        {
+            health = 100;
+        }
+
         // Check if health is less than 0
         if (health <= 0)
         {
+            playerMovement.Death();
             Debug.Log("You died!");
+            GameObject.Find("GameManager").GetComponent<GameManager>().PlayerDeath();
         }
     }
 
+    // -------------------------------------------------
+    // Unity Methods
+    // -------------------------------------------------
+    //
+    void Start()
+    {
+        // Get the player movement script
+        playerMovement = GetComponent<PlayerMovement>();
+    }
 }

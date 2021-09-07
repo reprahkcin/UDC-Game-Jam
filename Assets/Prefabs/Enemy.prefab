@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: -8294916008492668859}
   - component: {fileID: 4913433672688118565}
   - component: {fileID: 498082690}
+  - component: {fileID: 8912350140838581259}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
@@ -158,9 +159,9 @@ Rigidbody2D:
   m_GameObject: {fileID: 8229883490984176265}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -199,6 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deadSprite: {fileID: -5413523621558687431, guid: f6cdd333b0d7a99428574f0d0cde3ff7, type: 3}
   huntPlayer: {fileID: 498082690}
+  pointValue: 10
 --- !u!114 &498082690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +214,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8229883490984176261}
-  minSpeed: 0.18
-  maxSpeed: 1.78
+  minSpeed: 0.552
+  maxSpeed: 1.782
   isMoving: 1
   isAttacked: 0
+--- !u!95 &8912350140838581259
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229883490984176265}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8ee35da096cd7c14ab5753a785a6c1d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

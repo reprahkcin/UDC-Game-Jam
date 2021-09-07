@@ -15,11 +15,17 @@ public class Enemy : MonoBehaviour
     // TODO: Add this in the inspector
     public Sprite deadSprite;
 
+    // GameManager
+    private GameManager gameManager;
+
     // Hunt Player script
     public HuntPlayer huntPlayer;
 
     // Enemy Rigidbody 2D
     private Rigidbody2D rb;
+
+    // Animator
+    private Animator animator;
 
     // ------------------------------------------------------------------------
     // Enemy Stats
@@ -67,6 +73,14 @@ public class Enemy : MonoBehaviour
 
         // Get Rigidbody2D
         rb = GetComponent<Rigidbody2D>();
+
+        // Get GameManager
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        // Get Animator
+        animator = GetComponent<Animator>();
+
+
     }
 
     void Update()
@@ -93,8 +107,15 @@ public class Enemy : MonoBehaviour
         // Change the sprite to dead
         spriteRenderer.sprite = deadSprite;
 
+        // Trigger isDead animation
+        animator.SetTrigger("isDead");
+
         // Wait for death
         yield return new WaitForSeconds(3);
+
+        // Update score on GameManager
+        gameManager.UpdateScore(pointValue);
+
 
         // Destroy gameObject
         Destroy(gameObject);

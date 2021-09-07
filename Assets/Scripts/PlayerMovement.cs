@@ -27,8 +27,23 @@ public class PlayerMovement : MonoBehaviour
     // Vector2 for movement
     Vector2 movement;
 
+    // Bool isAlive
+    private bool isAlive = true;
+
     // -------------------------------------------------
-    // Methods
+    // Various Methods
+    // --------------------------------------------------
+    //
+    // Player death
+    public void Death()
+    {
+        // Set isAlive to false
+        isAlive = false;
+
+    }
+
+    // -------------------------------------------------
+    // Unity Methods
     // --------------------------------------------------
     void Start()
     {
@@ -41,72 +56,81 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // get the horizontal and vertical axis
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        // if the player is alive
+        if (isAlive)
+        {
+            // get the horizontal and vertical axis
+            float x = Input.GetAxis("Horizontal");
+            float y = Input.GetAxis("Vertical");
 
-        // Create the movement vector and normalize it
-        movement = new Vector2(x, y).normalized;
+            // Create the movement vector and normalize it
+            movement = new Vector2(x, y).normalized;
 
-        // Set speed animator parameter to movement magnitude
-        animator.SetFloat("Speed", movement.magnitude);
+            // Set speed animator parameter to movement magnitude
+            animator.SetFloat("Speed", movement.magnitude);
 
-        // If x is less than 0
-        if (x < 0)
-        {
-            animator.SetFloat("Horizontal", -1f);
-            animator.SetFloat("Vertical", 0f);
-            weaponAnimator.SetFloat("dirX", -1f);
-            weaponAnimator.SetFloat("dirY", 0f);
-        } // If x is greater than 0
-        else if (x > 0)
-        {
-            animator.SetFloat("Horizontal", 1f);
-            animator.SetFloat("Vertical", 0f);
-            weaponAnimator.SetFloat("dirX", 1f);
-            weaponAnimator.SetFloat("dirY", 0f);
-        }
+            // If x is less than 0
+            if (x < 0)
+            {
+                animator.SetFloat("Horizontal", -1f);
+                animator.SetFloat("Vertical", 0f);
+                weaponAnimator.SetFloat("dirX", -1f);
+                weaponAnimator.SetFloat("dirY", 0f);
+            } // If x is greater than 0
+            else if (x > 0)
+            {
+                animator.SetFloat("Horizontal", 1f);
+                animator.SetFloat("Vertical", 0f);
+                weaponAnimator.SetFloat("dirX", 1f);
+                weaponAnimator.SetFloat("dirY", 0f);
+            }
 
-        // If y is less than 0
-        if (y < 0)
-        {
-            animator.SetFloat("Vertical", -1f);
-            animator.SetFloat("Horizontal", 0f);
-            weaponAnimator.SetFloat("dirY", -1f);
-            weaponAnimator.SetFloat("dirX", 0f);
-        } // If y is greater than 0
-        else if (y > 0)
-        {
-            animator.SetFloat("Vertical", 1f);
-            animator.SetFloat("Horizontal", 0f);
-            weaponAnimator.SetFloat("dirY", 1f);
-            weaponAnimator.SetFloat("dirX", 0f);
-        }
+            // If y is less than 0
+            if (y < 0)
+            {
+                animator.SetFloat("Vertical", -1f);
+                animator.SetFloat("Horizontal", 0f);
+                weaponAnimator.SetFloat("dirY", -1f);
+                weaponAnimator.SetFloat("dirX", 0f);
+            } // If y is greater than 0
+            else if (y > 0)
+            {
+                animator.SetFloat("Vertical", 1f);
+                animator.SetFloat("Horizontal", 0f);
+                weaponAnimator.SetFloat("dirY", 1f);
+                weaponAnimator.SetFloat("dirX", 0f);
+            }
 
-        // If mouse button is pressed
-        if (Input.GetMouseButtonDown(0))
-        {
-            // Set weapon animator trigger to attack
-            weaponAnimator.SetTrigger("Attack");
-            animator.SetTrigger("Attack");
-        }
+            // If mouse button is pressed
+            if (Input.GetMouseButtonDown(0))
+            {
+                // Set weapon animator trigger to attack
+                weaponAnimator.SetTrigger("Attack");
+                animator.SetTrigger("Attack");
+            }
 
-        // If the float speed is greater than 0
-        if (movement.magnitude > 0)
-        {
-            // set animator bool isMoving to true
-            animator.SetBool("isMoving", true);
-        }
-        else
-        {
-            // set animator bool isMoving to false
-            animator.SetBool("isMoving", false);
+            // If the float speed is greater than 0
+            if (movement.magnitude > 0)
+            {
+                // set animator bool isMoving to true
+                animator.SetBool("isMoving", true);
+            }
+            else
+            {
+                // set animator bool isMoving to false
+                animator.SetBool("isMoving", false);
+            }
         }
     }
 
     void FixedUpdate()
     {
-        // Move the player
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+        if (isAlive)
+        {
+
+            // Move the player
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }
     }
 }
