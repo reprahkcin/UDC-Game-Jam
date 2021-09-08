@@ -6,6 +6,21 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // -------------------------------------------------
+    // GameObje
+    // -------------------------------------------------
+
+    // GameManager
+    public GameManager gameManager;
+
+    // Weapon Animator
+    // TODO: Add this in the inspector
+    public Animator weaponAnimator;
+
+    // Animator
+    private Animator animator;
+
+
+    // -------------------------------------------------
     // Stats
     // -------------------------------------------------
     // Health
@@ -13,6 +28,9 @@ public class Player : MonoBehaviour
 
     // Player movement script
     private PlayerMovement playerMovement;
+
+    // Amount of powerups available
+    private int powerups = 5;
 
     // -------------------------------------------------
     // UI Getters
@@ -23,30 +41,6 @@ public class Player : MonoBehaviour
         return health;
     }
 
-
-
-    // -------------------------------------------------
-    // Collecting and Using Items
-    // -------------------------------------------------
-    // TODO: Items need to have a 2D Collider and isTrigger set to true
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        // Console log the trigger
-        //Debug.Log("Trigger: " + other.name);
-
-        // Check if the trigger is an item
-        if (other.CompareTag("Item"))
-        {
-            // Get the Item script
-            Item item = other.GetComponent<Item>();
-
-            // Apply health buff
-            health += item.getHealthBuff();
-
-            // Destroy the item
-            Destroy(other.gameObject);
-        }
-    }
 
 
     // -------------------------------------------------
@@ -74,6 +68,31 @@ public class Player : MonoBehaviour
     }
 
     // -------------------------------------------------
+    // Items
+    // -------------------------------------------------
+
+    // Get powerups available
+    public int GetPowerups()
+    {
+        return powerups;
+    }
+
+    // Add powerup
+    public void AddPowerup()
+    {
+        powerups++;
+    }
+
+    // Remove powerup
+    public void RemovePowerup()
+    {
+        powerups--;
+    }
+
+
+
+
+    // -------------------------------------------------
     // Unity Methods
     // -------------------------------------------------
     //
@@ -81,5 +100,38 @@ public class Player : MonoBehaviour
     {
         // Get the player movement script
         playerMovement = GetComponent<PlayerMovement>();
+
+
+        // Get the animator
+        animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        // -------------------------------------------------
+        // Mouse Controls
+        // --------------------------------------------------
+
+
+        // If mouse button is pressed
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Set weapon animator trigger to attack
+            weaponAnimator.SetTrigger("Attack");
+            animator.SetTrigger("Attack");
+        }
+
+        // If right mouse button is pressed
+        if (Input.GetMouseButtonDown(1))
+        {
+            // if remaining powerups is greater than 0
+            if (powerups > 0)
+            {
+                // Spawn an item
+                gameManager.GetComponent<GameManager>().SpawnItem();
+                // Decrease remaining powerups by 1
+                powerups--;
+            }
+        }
     }
 }

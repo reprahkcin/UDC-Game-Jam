@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     // -------------------------------------------------
     public static GameManager gm;
 
+    // Emily
+    private GameObject emily;
+
     // Player Object
     // TODO: Add Player prefab in the inspector
     public GameObject player;
@@ -83,6 +86,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // Set Emily
+        emily = GameObject.Find("Emily");
     }
 
 
@@ -202,7 +208,7 @@ public class GameManager : MonoBehaviour
     // -------------------------------------------------
 
     // Spawns an enemy
-    void SpawnEnemy()
+    public void SpawnEnemy()
     {
         // Get random spawn point
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
@@ -221,21 +227,27 @@ public class GameManager : MonoBehaviour
     }
 
     // Spawns an item
-    void SpawnItem()
+    public void SpawnItem()
     {
-        // Get random spawn point
-        int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+        // Tell Emily to give an item
+        emily.GetComponent<Emily>().GiveItem();
 
-        // Get random item
-        int itemIndex = Random.Range(0, itemPrefabs.Length);
+        // Wait for Emily to enter the garage
+        StartCoroutine(ItemTimer(2f));
+    }
 
-        // Instantiate item
+    // -------------------------------------------------
+    // Timer
+    // -------------------------------------------------
+
+    IEnumerator ItemTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        // Instantiate item at emily's position
         GameObject item =
-          Instantiate(itemPrefabs[itemIndex],
-          spawnPoints[spawnPointIndex].position,
-          spawnPoints[spawnPointIndex].rotation);
-
-        // Add item to list
-        items.Add(item);
+          Instantiate(itemPrefabs[0],
+          emily.transform.position,
+          Quaternion.identity);
     }
 }

@@ -146,6 +146,27 @@ TextureImporter:
   - first:
       213: -8443205175241295870
     second: Raw Dog
+  - first:
+      213: 1451144491853017341
+    second: crumbs
+  - first:
+      213: 6918307627122946692
+    second: Prescription Focus Aid
+  - first:
+      213: -4632878034074839434
+    second: pickle
+  - first:
+      213: 5153993527768697990
+    second: Emily_right_leg_down
+  - first:
+      213: -6142601491675370099
+    second: Emily_peak_jump
+  - first:
+      213: -9028476847145899157
+    second: Emily_Left_leg_down
+  - first:
+      213: 3673804468810102093
+    second: Emily_both_hands_raised
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1077,7 +1098,7 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1085,6 +1106,153 @@ TextureImporter:
       bones: []
       spriteID: 208b00c80a5b3da80800000000000000
       internalID: -8443205175241295870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crumbs
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1009
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df0f9a21a30832410800000000000000
+      internalID: 1451144491853017341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prescription Focus Aid
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1009
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 482f981d124c20060800000000000000
+      internalID: 6918307627122946692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickle
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 992
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 676524b59f5b4bfb0800000000000000
+      internalID: -4632878034074839434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emily_right_leg_down
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 944
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68cc0557ec9a68740800000000000000
+      internalID: 5153993527768697990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emily_peak_jump
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 944
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8da7ebfc7811caa0800000000000000
+      internalID: -6142601491675370099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emily_Left_leg_down
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 944
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ba707742864b280800000000000000
+      internalID: -9028476847145899157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emily_both_hands_raised
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 944
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d453ba123b9fbf230800000000000000
+      internalID: 3673804468810102093
       vertices: []
       indices: 
       edges: []

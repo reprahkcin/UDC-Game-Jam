@@ -23,7 +23,6 @@ public class Sword : MonoBehaviour
     // On Collision with Enemy
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collision with " + other.name);
         // If Enemy
         if (other.gameObject.tag == "Enemy")
         {

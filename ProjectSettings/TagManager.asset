@@ -8,6 +8,8 @@ TagManager:
   - Hot Dog
   - Item
   - Enemy
+  - Consumer
+  - Emily
   layers:
   - Default
   - TransparentFX

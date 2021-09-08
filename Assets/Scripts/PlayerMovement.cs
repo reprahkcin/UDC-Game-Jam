@@ -52,6 +52,18 @@ public class PlayerMovement : MonoBehaviour
 
         // get the Animator component
         animator = GetComponent<Animator>();
+
+    }
+
+    void FixedUpdate()
+    {
+
+        if (isAlive)
+        {
+
+            // Move the player
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }
     }
 
     void Update()
@@ -59,6 +71,10 @@ public class PlayerMovement : MonoBehaviour
         // if the player is alive
         if (isAlive)
         {
+
+            // -------------------------------------------------
+            // Movement Controls
+            // --------------------------------------------------
             // get the horizontal and vertical axis
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
@@ -101,13 +117,9 @@ public class PlayerMovement : MonoBehaviour
                 weaponAnimator.SetFloat("dirX", 0f);
             }
 
-            // If mouse button is pressed
-            if (Input.GetMouseButtonDown(0))
-            {
-                // Set weapon animator trigger to attack
-                weaponAnimator.SetTrigger("Attack");
-                animator.SetTrigger("Attack");
-            }
+
+
+
 
             // If the float speed is greater than 0
             if (movement.magnitude > 0)
@@ -123,14 +135,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-
-        if (isAlive)
-        {
-
-            // Move the player
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        }
-    }
 }
