@@ -18,7 +18,7 @@ public class Emily : MonoBehaviour
     // Trigger Animation to Give_Item
     public void GiveItem()
     {
-        //animator.SetTrigger("Give_Item");
+        animator.SetTrigger("Give_Item");
     }
 
     // ------------------------------------------------------------------------------

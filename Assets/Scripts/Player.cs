@@ -33,14 +33,13 @@ public class Player : MonoBehaviour
     private int powerups = 5;
 
     // -------------------------------------------------
-    // UI Getters
+    // UI/Game Getters
     // -------------------------------------------------
     // Health
     public int GetHealth()
     {
         return health;
     }
-
 
 
     // -------------------------------------------------
@@ -77,16 +76,9 @@ public class Player : MonoBehaviour
         return powerups;
     }
 
-    // Add powerup
-    public void AddPowerup()
+    public void SetPowerups(int powerups)
     {
-        powerups++;
-    }
-
-    // Remove powerup
-    public void RemovePowerup()
-    {
-        powerups--;
+        this.powerups = powerups;
     }
 
 
@@ -119,19 +111,6 @@ public class Player : MonoBehaviour
             // Set weapon animator trigger to attack
             weaponAnimator.SetTrigger("Attack");
             animator.SetTrigger("Attack");
-        }
-
-        // If right mouse button is pressed
-        if (Input.GetMouseButtonDown(1))
-        {
-            // if remaining powerups is greater than 0
-            if (powerups > 0)
-            {
-                // Spawn an item
-                gameManager.GetComponent<GameManager>().SpawnItem();
-                // Decrease remaining powerups by 1
-                powerups--;
-            }
         }
     }
 }

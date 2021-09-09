@@ -66,11 +66,7 @@ public class GameManager : MonoBehaviour
     // TODO: Add score incrementer to Enemy Script
     public int score = 0;
 
-    // Bool to trigger item spawn
-    private bool spawnItem = false;
 
-    // Hot Dogs available
-    private int hotDogs = 4;
 
     // -------------------------------------------------
     // Unity Functions
@@ -94,26 +90,23 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // listen for key h
-        // if Player clicks right mouse button, set spawnItem to true
-        // if (Input.GetKeyDown(1))
-        if (Input.GetKeyDown(KeyCode.H))
+        // listen for right mouse click
+        if (Input.GetMouseButtonDown(1))
         {
-            // if hotDogs > 0, spawn item
-            if (hotDogs > 0)
+            // check player script for hot dog availability
+            if (player.GetComponent<Player>().GetPowerups() > 0)
             {
-                spawnItem = true;
-                hotDogs--;
+
+                // Trigger Emily Give_Item animation
+                emily.GetComponent<Emily>().GiveItem();
+
+                // spawn hot dog at spawnPoint[1]
+                Instantiate(itemPrefabs[0], spawnPoints[1].position, Quaternion.identity);
+
+                // decrement hot dogs
+                player.GetComponent<Player>().SetPowerups(player.GetComponent<Player>().GetPowerups() - 1);
             }
         }
-
-        // If spawnItem is true, spawn an item
-        if (spawnItem)
-        {
-            SpawnItem();
-            spawnItem = false;
-        }
-
     }
 
     // -------------------------------------------------
@@ -243,11 +236,9 @@ public class GameManager : MonoBehaviour
     IEnumerator ItemTimer(float time)
     {
         yield return new WaitForSeconds(time);
+        // Spawn item
+        // instantiate HotDog at spawnPoint[1]
+        Instantiate(itemPrefabs[0], spawnPoints[1].position, Quaternion.identity);
 
-        // Instantiate item at emily's position
-        GameObject item =
-          Instantiate(itemPrefabs[0],
-          emily.transform.position,
-          Quaternion.identity);
     }
 }
