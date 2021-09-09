@@ -18,7 +18,9 @@ public class CanvasManager : MonoBehaviour
     public HealthBar healthBar;
 
     // Player
-    public Player player;
+    public GameObject player;
+
+    private Player playerScript;
 
     // ------------------------------------------------------------
     // State Variables
@@ -76,8 +78,11 @@ public class CanvasManager : MonoBehaviour
             // Update the health bar
             healthBar.UpdateHealthBar(playerHealth / 100f);
 
+
+
+
             // Update the hot dog text
-            hotDogText.text = "Hot Dogs: " + player.GetPowerups();
+            hotDogText.text = "Hot Dogs: " + playerScript.GetPowerups();
 
         }
     }
@@ -159,8 +164,9 @@ public class CanvasManager : MonoBehaviour
         // Activate the current canvas
         currentCanvas.gameObject.SetActive(true);
 
-        // Get the player
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        // Get the player script
+        playerScript = player.GetComponent<Player>();
+
     }
 
     void Update()

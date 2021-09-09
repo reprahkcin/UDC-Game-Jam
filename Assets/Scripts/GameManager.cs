@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private GameObject emily;
 
     // Player Object
-    private GameObject player;
+    public GameObject player;
 
     // Enemy Prefabs[]
     // TODO: Add enemies in the inspector
@@ -86,8 +86,6 @@ public class GameManager : MonoBehaviour
         // Set Emily
         emily = GameObject.Find("Emily");
 
-        // Set Player
-        player = GameObject.Find("Player");
     }
 
 

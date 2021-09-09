@@ -370,6 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   weaponAnimator: {fileID: 223692176492412963}
+  powerups: 4
 --- !u!1 &5604802204177026323
 GameObject:
   m_ObjectHideFlags: 0
