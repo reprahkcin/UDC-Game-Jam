@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,8 +15,7 @@ public class GameManager : MonoBehaviour
     private GameObject emily;
 
     // Player Object
-    // TODO: Add Player prefab in the inspector
-    public GameObject player;
+    private GameObject player;
 
     // Enemy Prefabs[]
     // TODO: Add enemies in the inspector
@@ -85,6 +85,9 @@ public class GameManager : MonoBehaviour
 
         // Set Emily
         emily = GameObject.Find("Emily");
+
+        // Set Player
+        player = GameObject.Find("Player");
     }
 
 
@@ -93,25 +96,40 @@ public class GameManager : MonoBehaviour
         // listen for right mouse click
         if (Input.GetMouseButtonDown(1))
         {
-            // check player script for hot dog availability
-            if (player.GetComponent<Player>().GetPowerups() > 0)
-            {
-
-                // Trigger Emily Give_Item animation
-                emily.GetComponent<Emily>().GiveItem();
-
-                // spawn hot dog at spawnPoint[1]
-                Instantiate(itemPrefabs[0], spawnPoints[1].position, Quaternion.identity);
-
-                // decrement hot dogs
-                player.GetComponent<Player>().SetPowerups(player.GetComponent<Player>().GetPowerups() - 1);
-            }
+            SpawnHotDog();
         }
     }
+
+
+
 
     // -------------------------------------------------
     // Gameplay Functions
     // -------------------------------------------------
+
+    // Spawn Hot Dog
+    public void SpawnHotDog()
+    {
+        // Player Script
+        Player playerScript = player.GetComponent<Player>();
+
+        // check player script for hot dog availability
+        if (playerScript.GetPowerups() > 0)
+        {
+
+            // Trigger Emily Give_Item animation
+            emily.GetComponent<Emily>().GiveItem();
+
+            // spawn hot dog at spawnPoint[1]
+            Instantiate(itemPrefabs[0], spawnPoints[1].position, Quaternion.identity);
+
+            // decrement hot dogs
+            playerScript.SetPowerups(playerScript.GetPowerups() - 1);
+
+
+        }
+    }
+
     // Update Score
     public void UpdateScore(int score)
     {
@@ -136,9 +154,6 @@ public class GameManager : MonoBehaviour
 
         // Start wave
         StartCoroutine(SpawnWave(spawnTimer));
-
-        // spawn items
-        SpawnItem();
 
     }
 

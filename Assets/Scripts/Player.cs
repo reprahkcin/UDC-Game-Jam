@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // -------------------------------------------------
-    // GameObje
+    // GameObjects
     // -------------------------------------------------
 
     // GameManager
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     private PlayerMovement playerMovement;
 
     // Amount of powerups available
-    private int powerups = 5;
+    public int powerups = 5;
 
     // -------------------------------------------------
     // UI/Game Getters
@@ -62,6 +62,11 @@ public class Player : MonoBehaviour
         {
             playerMovement.Death();
             Debug.Log("You died!");
+            // Change the animation to Player_Idle_Down
+            animator.SetBool("isMoving", false);
+
+
+
             GameObject.Find("GameManager").GetComponent<GameManager>().PlayerDeath();
         }
     }
