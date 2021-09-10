@@ -107,6 +107,8 @@ public class Player : MonoBehaviour
         // Relase the swarm of rats
         gameManager.DeathSwarm();
 
+        GameManager.gm.DeathSwarm();
+
         // TODO: Death Animation
     }
 
@@ -124,7 +126,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
 
         // Get the GameManager
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()

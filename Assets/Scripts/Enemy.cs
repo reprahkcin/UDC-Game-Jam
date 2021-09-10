@@ -109,11 +109,12 @@ public class Enemy : MonoBehaviour
         // Trigger isDead animation
         animator.SetTrigger("isDead");
 
+        // Update score on GameManager
+        gameManager.UpdateScore(pointValue);
+
         // Wait for death
         yield return new WaitForSeconds(time);
 
-        // Update score on GameManager
-        gameManager.UpdateScore(pointValue);
 
         // Destroy gameObject
         Destroy(gameObject);

@@ -51,7 +51,7 @@ public class CanvasManager : MonoBehaviour
     public void UpdateHealth()
     {
         // Get Health from Player
-        int playerHealth = player.GetComponent<Player>().GetHealth();
+        int playerHealth = playerScript.GetHealth();
 
         // Call function to update health bar
         healthBar.UpdateHealthBar(playerHealth);
