@@ -12,7 +12,7 @@ public class Emily : MonoBehaviour
     private Animator animator;
 
     //  ------------------------------------------------------------------------------
-    //  Functions
+    //  Methods
     //  ------------------------------------------------------------------------------
 
     // Trigger Animation to Give_Item

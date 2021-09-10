@@ -16,7 +16,7 @@ public class Attack : MonoBehaviour
     // -------------------------------------------------
 
     // Attack Damage
-    private int attackDamage = 2;
+    private int attackDamage = 1;
 
     // -------------------------------------------------
     // Functions
