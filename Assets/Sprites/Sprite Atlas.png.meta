@@ -176,6 +176,9 @@ TextureImporter:
   - first:
       213: 8553324453568318624
     second: Sprite Atlas_18
+  - first:
+      213: 501552035981513187
+    second: puke
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1317,7 +1320,7 @@ TextureImporter:
         width: 10
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1325,6 +1328,27 @@ TextureImporter:
       bones: []
       spriteID: 0ac0a97e54383b670800000000000000
       internalID: 8553324453568318624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puke
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 922
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e15d0d5beed5f600800000000000000
+      internalID: 501552035981513187
       vertices: []
       indices: 
       edges: []

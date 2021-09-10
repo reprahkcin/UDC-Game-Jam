@@ -74,6 +74,9 @@ public class PlayerMovement : MonoBehaviour
             // Set speed animator parameter to movement magnitude
             animator.SetFloat("Speed", movement.magnitude);
 
+
+
+
             // If x is less than 0
             if (x < 0)
             {
