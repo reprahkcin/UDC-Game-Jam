@@ -368,9 +368,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788ca6b2872f3ff42aa1724628880e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   weaponAnimator: {fileID: 223692176492412963}
-  powerups: 4
+  health: 100
+  hotdogs: 4
 --- !u!1 &5604802204177026323
 GameObject:
   m_ObjectHideFlags: 0

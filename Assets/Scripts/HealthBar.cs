@@ -7,19 +7,28 @@ public class HealthBar : MonoBehaviour
     // -------------------------------------------------------
     // GameObject Connections
     // -------------------------------------------------------
-    public GameObject healthBar;
+    public GameObject HealthBarObject;
 
     // -------------------------------------------------------
-    // Unity Methods
+    // Methods
+    // Called from Canvas Manager
     // -------------------------------------------------------
+
+
     // Update Health Bar
-    public void UpdateHealthBar(float health)
+    public void UpdateHealthBar(int health)
     {
-        // Get RectTransform
-        RectTransform rectTransform = healthBar.GetComponent<RectTransform>();
+        // Get RectTransform of HealthBarObject
+        RectTransform healthBarRectTransform = HealthBarObject.GetComponent<RectTransform>();
 
-        // Set Health Bar Size scale
-        rectTransform.localScale = new Vector3(health, 1, 1);
+        // Convert health to float
+        float healthFloat = health;
+
+        // Divide health float by 100
+        healthFloat = healthFloat / 100;
+
+        // Set HealthBarObject's local scale x to health
+        healthBarRectTransform.localScale = new Vector3(healthFloat, healthBarRectTransform.localScale.y, healthBarRectTransform.localScale.z);
     }
 
 }

@@ -9,12 +9,15 @@ public class GameManager : MonoBehaviour
     // -------------------------------------------------
     // Required GameObjects
     // -------------------------------------------------
+
+    // Singleton
     public static GameManager gm;
 
     // Emily
     private GameObject emily;
 
     // Player Object
+    // TODO: Add prefab from outside scene
     public GameObject player;
 
     // Enemy Prefabs[]
@@ -32,6 +35,7 @@ public class GameManager : MonoBehaviour
     // -------------------------------------------------
     // Gameplay Variables
     // -------------------------------------------------
+
     // Spawn timer
     [Range(0.1f, 10f)]
     [Tooltip("Time between enemy spawns")]
@@ -42,14 +46,18 @@ public class GameManager : MonoBehaviour
     [Tooltip("Number of enemies to spawn in a wave")]
     public int enemiesPerWave = 5;
 
-    // Number of waves
-    [Range(1, 10)]
-    [Tooltip("Number of waves")]
-    public int waves = 5;
+    // TODO: Add multiple waves
+    // // Number of waves
+    // [Range(1, 10)]
+    // [Tooltip("Number of waves")]
+    // public int waves = 5;
+
 
     // -------------------------------------------------
     // Lists
+    // I am not using these currently, but I suppose it can't hurt to keep track of them
     // -------------------------------------------------
+
     // List of enemies
     public List<GameObject> enemies = new List<GameObject>();
 
@@ -57,13 +65,13 @@ public class GameManager : MonoBehaviour
     public List<GameObject> items = new List<GameObject>();
 
     // -------------------------------------------------
-    // Private Variables
+    // Variables
     // -------------------------------------------------
+
     // Current wave
     private int currentWave = 0;
 
     // Score
-    // TODO: Add score incrementer to Enemy Script
     public int score = 0;
 
 
@@ -84,7 +92,15 @@ public class GameManager : MonoBehaviour
         }
 
         // Set Emily
-        emily = GameObject.Find("Emily");
+        emily = GameObject.FindGameObjectWithTag("Emily");
+
+        // Spawn Player
+        // Check if player exists
+        if (GameObject.FindGameObjectWithTag("Player") == null)
+        {
+            // Instantiate player at the center of the screen
+            Instantiate(player, Vector3.zero, Quaternion.identity);
+        }
 
     }
 
@@ -99,34 +115,11 @@ public class GameManager : MonoBehaviour
     }
 
 
-
-
     // -------------------------------------------------
     // Gameplay Functions
     // -------------------------------------------------
 
-    // Spawn Hot Dog
-    public void SpawnHotDog()
-    {
-        // Player Script
-        Player playerScript = player.GetComponent<Player>();
 
-        // check player script for hot dog availability
-        if (playerScript.GetPowerups() > 0)
-        {
-
-            // Trigger Emily Give_Item animation
-            emily.GetComponent<Emily>().GiveItem();
-
-            // spawn hot dog at spawnPoint[1]
-            Instantiate(itemPrefabs[0], spawnPoints[1].position, Quaternion.identity);
-
-            // decrement hot dogs
-            playerScript.SetPowerups(playerScript.GetPowerups() - 1);
-
-
-        }
-    }
 
     // Update Score
     public void UpdateScore(int score)
@@ -139,37 +132,37 @@ public class GameManager : MonoBehaviour
         return score;
     }
 
-
     public void StartGame()
     {
-        // Spawn Player
-        // Check if player exists
-        if (GameObject.FindGameObjectWithTag("Player") == null)
-        {
-            // Instantiate player at the center of the screen
-            Instantiate(player, Vector3.zero, Quaternion.identity);
-        }
+
 
         // Start wave
         StartCoroutine(SpawnWave(spawnTimer));
 
     }
 
-    // private bool death is over
-    private bool deathIsOver = false;
-    // Death of Player
-    public void PlayerDeath()
-    {
-        if (!deathIsOver)
-        {
 
-            // spawn 50 enemies without delay
-            for (int i = 0; i < 50; i++)
-            {
-                SpawnWave(0.01f);
-            }
-        }
-        deathIsOver = true;
+    // -------------------------------------------------
+    // Death Sequence
+    // TODO: Add death sequence
+    // -------------------------------------------------
+
+    // private bool death is over
+    //private bool deathIsOver = false;
+    // Death of Player
+    public void DeathSwarm()
+    {
+
+        Debug.Log("Death Swarm!");
+        // if (!deathIsOver)
+        // {
+        //     // spawn 50 enemies without delay
+        //     for (int i = 0; i < 50; i++)
+        //     {
+        //         SpawnWave(0.01f);
+        //     }
+        // }
+        // deathIsOver = true;
 
     }
     // -------------------------------------------------
@@ -209,6 +202,15 @@ public class GameManager : MonoBehaviour
     }
 
 
+    IEnumerator HotDogTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // spawn hot dog at spawnPoint[1]
+        Instantiate(itemPrefabs[0], spawnPoints[1].position, Quaternion.identity);
+
+    }
+
+
     // -------------------------------------------------
     // Spawn Functions
     // -------------------------------------------------
@@ -232,26 +234,28 @@ public class GameManager : MonoBehaviour
         enemies.Add(enemy);
     }
 
-    // Spawns an item
-    public void SpawnItem()
+    // Spawn Hot Dog
+    public void SpawnHotDog()
     {
-        // Tell Emily to give an item
-        emily.GetComponent<Emily>().GiveItem();
+        // Player Script
+        Player playerScript = player.GetComponent<Player>();
 
-        // Wait for Emily to enter the garage
-        StartCoroutine(ItemTimer(2f));
+        // check player script for hot dog availability
+        if (playerScript.GetHotdogs() > 0)
+        {
+
+            // Trigger Emily Give_Item animation
+            emily.GetComponent<Emily>().GiveItem();
+
+            // wait until Emily is in the garage to spawn the hot dog
+            StartCoroutine(HotDogTimer(2f));
+
+            // decrement hot dogs
+            playerScript.SetHotdogs(playerScript.GetHotdogs() - 1);
+
+
+        }
     }
 
-    // -------------------------------------------------
-    // Timer
-    // -------------------------------------------------
 
-    IEnumerator ItemTimer(float time)
-    {
-        yield return new WaitForSeconds(time);
-        // Spawn item
-        // instantiate HotDog at spawnPoint[1]
-        Instantiate(itemPrefabs[0], spawnPoints[1].position, Quaternion.identity);
-
-    }
 }

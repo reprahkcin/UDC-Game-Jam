@@ -14,33 +14,21 @@ public class PlayerMovement : MonoBehaviour
     // Get Animator component
     private Animator animator;
 
-    // Get Weapon Animator component
-    // TODO: Add this in the inspector
+    // Weapon Animator
     public Animator weaponAnimator;
 
     // Float for moveSpeed
     public float moveSpeed = 5f;
 
+    // Player script
+    private Player player;
+
     // -------------------------------------------------
     // Assorted Variables
     // --------------------------------------------------
-    // Vector2 for movement
+
+    // Vector2 container for calculated movement
     Vector2 movement;
-
-    // Bool isAlive
-    private bool isAlive = true;
-
-    // -------------------------------------------------
-    // Various Methods
-    // --------------------------------------------------
-    //
-    // Player death
-    public void Death()
-    {
-        // Set isAlive to false
-        isAlive = false;
-
-    }
 
     // -------------------------------------------------
     // Unity Methods
@@ -53,14 +41,16 @@ public class PlayerMovement : MonoBehaviour
         // get the Animator component
         animator = GetComponent<Animator>();
 
+        // get the Player script
+        player = GetComponent<Player>();
+
     }
 
     void FixedUpdate()
     {
-
-        if (isAlive)
+        // If the player is still alive, apply the movemement created below
+        if (player.isAliveBool())
         {
-
             // Move the player
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         }
@@ -68,13 +58,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // if the player is alive
-        if (isAlive)
+        // -------------------------------------------------
+        // Movement Controls
+        // --------------------------------------------------
+        // If the player is still alive
+        if (player.isAliveBool())
         {
-
-            // -------------------------------------------------
-            // Movement Controls
-            // --------------------------------------------------
             // get the horizontal and vertical axis
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
@@ -99,9 +88,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetFloat("Vertical", 0f);
                 weaponAnimator.SetFloat("dirX", 1f);
                 weaponAnimator.SetFloat("dirY", 0f);
-            }
-
-            // If y is less than 0
+            } // If y is less than 0
             if (y < 0)
             {
                 animator.SetFloat("Vertical", -1f);
@@ -116,10 +103,6 @@ public class PlayerMovement : MonoBehaviour
                 weaponAnimator.SetFloat("dirY", 1f);
                 weaponAnimator.SetFloat("dirX", 0f);
             }
-
-
-
-
 
             // If the float speed is greater than 0
             if (movement.magnitude > 0)

@@ -6,11 +6,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // -------------------------------------------------
-    // GameObjects
+    // GameObjects and Components
     // -------------------------------------------------
 
     // GameManager
-    public GameManager gameManager;
+    private GameManager gameManager;
 
     // Weapon Animator
     // TODO: Add this in the inspector
@@ -19,18 +19,21 @@ public class Player : MonoBehaviour
     // Animator
     private Animator animator;
 
+    // Player movement script
+    private PlayerMovement playerMovement;
+
 
     // -------------------------------------------------
     // Stats
     // -------------------------------------------------
     // Health
-    private int health = 100;
+    public int health = 100;
 
-    // Player movement script
-    private PlayerMovement playerMovement;
+    // Bool isAlive
+    private bool isAlive = true;
 
-    // Amount of powerups available
-    public int powerups = 5;
+    // Number of Hotdogs Available
+    public int hotdogs = 5;
 
     // -------------------------------------------------
     // UI/Game Getters
@@ -39,6 +42,24 @@ public class Player : MonoBehaviour
     public int GetHealth()
     {
         return health;
+    }
+
+    // Hotdogs
+    public int GetHotdogs()
+    {
+        return hotdogs;
+    }
+
+    // Set Hotdogs
+    public void SetHotdogs(int newHotdogs)
+    {
+        hotdogs = newHotdogs;
+    }
+
+    // Check if player is alive
+    public bool isAliveBool()
+    {
+        return isAlive;
     }
 
 
@@ -56,37 +77,38 @@ public class Player : MonoBehaviour
         {
             health = 100;
         }
+        // If health is less than 0, set it to 0
+        else if (health < 0)
+        {
+            health = 0;
+        }
 
         // Check if health is less than 0
         if (health <= 0)
         {
-            playerMovement.Death();
-            Debug.Log("You died!");
-            // Change the animation to Player_Idle_Down
-            animator.SetBool("isMoving", false);
+            // Inform the family that the player is dead
+            Debug.Log("He ded.");
 
-
-
-            GameObject.Find("GameManager").GetComponent<GameManager>().PlayerDeath();
+            // Start the Death Sequence. Most will take place here, but the rat swarm will be handled in the GameManager script
+            Death();
         }
     }
 
-    // -------------------------------------------------
-    // Items
-    // -------------------------------------------------
-
-    // Get powerups available
-    public int GetPowerups()
+    // Player death
+    public void Death()
     {
-        return powerups;
+        // Set isAlive to false
+        // This should stop movement and attack capabilities, as they both check
+        isAlive = false;
+
+        // Change the animation to Player_Idle_Down
+        animator.SetBool("isMoving", false);
+
+        // Relase the swarm of rats
+        gameManager.DeathSwarm();
+
+        // TODO: Death Animation
     }
-
-    public void SetPowerups(int powerups)
-    {
-        this.powerups = powerups;
-    }
-
-
 
 
     // -------------------------------------------------
@@ -98,9 +120,11 @@ public class Player : MonoBehaviour
         // Get the player movement script
         playerMovement = GetComponent<PlayerMovement>();
 
-
         // Get the animator
         animator = GetComponent<Animator>();
+
+        // Get the GameManager
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
@@ -109,13 +133,16 @@ public class Player : MonoBehaviour
         // Mouse Controls
         // --------------------------------------------------
 
-
         // If mouse button is pressed
         if (Input.GetMouseButtonDown(0))
         {
-            // Set weapon animator trigger to attack
-            weaponAnimator.SetTrigger("Attack");
-            animator.SetTrigger("Attack");
+            // If the player is alive
+            if (isAlive)
+            {
+                // Set weapon animator trigger to attack
+                weaponAnimator.SetTrigger("Attack");
+                animator.SetTrigger("Attack");
+            }
         }
     }
 }

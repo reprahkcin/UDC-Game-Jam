@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     // GameObjects
     // ------------------------------------------------------------------------
 
+    // GameManager
+    private GameManager gameManager;
+
     // SpriteRenderer
     private SpriteRenderer spriteRenderer;
 
@@ -15,16 +18,13 @@ public class Enemy : MonoBehaviour
     // TODO: Add this in the inspector
     public Sprite deadSprite;
 
-    // GameManager
-    private GameManager gameManager;
-
     // Hunt Player script
-    public HuntPlayer huntPlayer;
+    private HuntPlayer huntPlayer;
 
     // Enemy Rigidbody 2D
     private Rigidbody2D rb;
 
-    // Animator
+    // Enemy Animator
     private Animator animator;
 
     // ------------------------------------------------------------------------
@@ -54,8 +54,10 @@ public class Enemy : MonoBehaviour
     }
 
     // Knock Enemy Back
+    // TODO: Calculate knockback opoosite of point of impact
     public void KnockBackEnemy(float knockBackForce)
     {
+
         rb.AddForce(new Vector2(knockBackForce, 0));
     }
 
@@ -80,7 +82,6 @@ public class Enemy : MonoBehaviour
         // Get Animator
         animator = GetComponent<Animator>();
 
-
     }
 
     void Update()
@@ -90,7 +91,7 @@ public class Enemy : MonoBehaviour
             // Call ToggleMovement() on HuntPlayer script
             huntPlayer.ToggleMovement();
             // Start DeathTimer coroutine
-            StartCoroutine(DeathTimer());
+            StartCoroutine(DeathTimer(3f));
         }
 
     }
@@ -100,10 +101,8 @@ public class Enemy : MonoBehaviour
     // ------------------------------------------------------------------------
 
     // Timer for death
-    IEnumerator DeathTimer()
+    IEnumerator DeathTimer(float time)
     {
-
-
         // Change the sprite to dead
         spriteRenderer.sprite = deadSprite;
 
@@ -111,11 +110,10 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("isDead");
 
         // Wait for death
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(time);
 
         // Update score on GameManager
         gameManager.UpdateScore(pointValue);
-
 
         // Destroy gameObject
         Destroy(gameObject);

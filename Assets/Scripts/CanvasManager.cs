@@ -14,13 +14,14 @@ public class CanvasManager : MonoBehaviour
     // GameManager
     public GameManager gameManager;
 
-    // HealthBar
+    // HealthBar: This is the health bar that is displayed on the bottom and consists of a dynamic image.
     public HealthBar healthBar;
 
     // Player
     public GameObject player;
 
-    private Player playerScript;
+    // Player Script
+    public Player playerScript;
 
     // ------------------------------------------------------------
     // State Variables
@@ -42,49 +43,33 @@ public class CanvasManager : MonoBehaviour
     // Hot Dog Text
     public TextMeshProUGUI hotDogText;
 
-    // Get Player Health
-    public int playerHealth;
-
-
-
 
     // ------------------------------------------------------------
     // Update UI
     // ------------------------------------------------------------
-    void UpdateUIText()
+
+    public void UpdateHealth()
     {
-        //if player exists in scene
-        if (GameObject.FindGameObjectWithTag("Player") != null)
-        {
+        // Get Health from Player
+        int playerHealth = player.GetComponent<Player>().GetHealth();
 
+        // Call function to update health bar
+        healthBar.UpdateHealthBar(playerHealth);
+    }
 
-            // Update the score UI
-            scoreText.text = "Score: " + gameManager.GetComponent<GameManager>().GetScore();
-
-            // Get player health
-            playerHealth = player.GetComponent<Player>().GetHealth();
-            // If player health is more than 100
-            if (playerHealth > 100)
-            {
-                // Set player health to 100
-                playerHealth = 100;
-            }
-            // if player health is less than 0
-            if (playerHealth < 0)
-            {
-                // Set player health to 0
-                playerHealth = 0;
-            }
-            // Update the health bar
-            healthBar.UpdateHealthBar(playerHealth / 100f);
-
-
-
-
-            // Update the hot dog text
-            hotDogText.text = "Hot Dogs: " + playerScript.GetPowerups();
-
-        }
+    public void UpdateScore()
+    {
+        // Get Score from GameManager
+        int score = gameManager.GetScore();
+        // Update the score UI
+        scoreText.text = "Score: " + score;
+    }
+    public void UpdateHotDog()
+    {
+        // Get Hot Dogs from Player
+        int hotDogs = player.GetComponent<Player>().GetHotdogs();
+        // Update the hot dog UI Text
+        hotDogText.text = "Hot Dogs: " + hotDogs;
     }
 
     // ------------------------------------------------------------
@@ -148,7 +133,7 @@ public class CanvasManager : MonoBehaviour
     }
 
     // ------------------------------------------------------------
-    // Unity Functions
+    // Unity Methods
     // ------------------------------------------------------------
     void Start()
     {
@@ -164,14 +149,21 @@ public class CanvasManager : MonoBehaviour
         // Activate the current canvas
         currentCanvas.gameObject.SetActive(true);
 
-        // Get the player script
-        playerScript = player.GetComponent<Player>();
+        // Get the player
+        player = GameObject.FindGameObjectWithTag("Player");
+
 
     }
 
     void Update()
     {
-        // Update the UI text
-        UpdateUIText();
+        // Update the health bar
+        UpdateHealth();
+
+        // Update the score
+        UpdateScore();
+
+        // Update the hot dog count
+        UpdateHotDog();
     }
 }

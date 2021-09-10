@@ -16,7 +16,7 @@ public class Attack : MonoBehaviour
     // -------------------------------------------------
 
     // Attack Damage
-    public int attackDamage = 1;
+    private int attackDamage = 2;
 
     // -------------------------------------------------
     // Functions
@@ -35,7 +35,6 @@ public class Attack : MonoBehaviour
 
     void Start()
     {
-
         // Set player
         player = GameObject.FindGameObjectWithTag("Player");
     }
