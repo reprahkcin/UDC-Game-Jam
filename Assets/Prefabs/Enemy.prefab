@@ -60,7 +60,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415f38f45458aeb498c9849facac4525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 1
 --- !u!1 &8229883490984176265
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deadSprite: {fileID: -5413523621558687431, guid: f6cdd333b0d7a99428574f0d0cde3ff7, type: 3}
-  huntPlayer: {fileID: 498082690}
   pointValue: 10
 --- !u!114 &498082690
 MonoBehaviour:
@@ -250,4 +248,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415f38f45458aeb498c9849facac4525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 1
