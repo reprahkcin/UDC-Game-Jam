@@ -119,6 +119,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
 
+        // Start theme music
+        SoundManager.instance.PlayTheme1();
 
         // Start wave
         StartCoroutine(SpawnWave(spawnTimer));
