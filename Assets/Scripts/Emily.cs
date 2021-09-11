@@ -19,10 +19,36 @@ public class Emily : MonoBehaviour
         }
     }
 
+    // Door animator
+    public GameObject door;
+
 
     // Trigger Animation to Give_Item
     public void GiveItem()
     {
+        // Set the bool isOpen to true on door animator
+        door.GetComponent<Animator>().SetTrigger("OpenDoor");
+
+        // Play the sound
+        //AudioManager.instance.Play("DoorOpen");
+
+        // Wait for door to open
+        StartCoroutine(Wait(1.5f));
+
+
+    }
+
+    // Wait for door to open
+    IEnumerator Wait(float time)
+    {
+        // yield return new WaitForSeconds(time);
+
         GetComponent<Animator>().SetTrigger("Give_Item");
+
+        // wait for animation to finish
+        yield return new WaitForSeconds(3);
+
+        // close the door
+        door.GetComponent<Animator>().SetTrigger("CloseDoor");
     }
 }

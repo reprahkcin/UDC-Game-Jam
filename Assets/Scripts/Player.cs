@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
     // -------------------------------------------------
     // Stats
     // -------------------------------------------------
+
+    // Max Health
+    public int maxHealth = 100;
+
     // Health
     public int health = 100;
 
@@ -42,9 +46,11 @@ public class Player : MonoBehaviour
     // UI/Game Getters
     // -------------------------------------------------
     // Health
-    public int GetHealth()
+    public float GetHealth()
     {
-        return health;
+        // Return current health as a percentage
+        return (float)health / (float)maxHealth;
+
     }
 
     // Hotdogs

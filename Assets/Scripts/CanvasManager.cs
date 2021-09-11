@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -48,13 +49,11 @@ public class CanvasManager : MonoBehaviour
     public void UpdateHealth()
     {
         // Get Health from Player
-        int playerHealth = Player.instance.GetComponent<Player>().GetHealth();
+        float playerHealth = Player.instance.GetComponent<Player>().GetHealth();
 
-        // Calculate ratio
-        float ratio = playerHealth / 100;
 
         // Apply health ratio to local scale of HealthBarForeground
-        //healthbarForeground.GetComponent<RectTransform>().localScale = new Vector3(ratio, 1f,1f);
+        healthbarForeground.GetComponent<RectTransform>().localScale = new Vector3(playerHealth, 1, 1);
     }
 
     public void UpdateScore()
