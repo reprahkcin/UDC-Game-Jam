@@ -22,6 +22,9 @@ public class HotDog : MonoBehaviour
     }
     void Pickup()
     {
+        // Play Eating sound
+        SoundManager.instance.PlayEating();
+
         // Instantiate pickup effect
         Instantiate(pickupEffect, transform.position, transform.rotation);
 

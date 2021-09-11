@@ -151,6 +151,9 @@ public class Player : MonoBehaviour
         // Set Player spriteRenderer color to red
         GetComponent<SpriteRenderer>().color = Color.red;
 
+        // Play a hurt sound
+        SoundManager.instance.PlayHurt();
+
         // Wait for 0.1 seconds
         StartCoroutine(DamageFlashTimer());
 
@@ -220,9 +223,11 @@ public class Player : MonoBehaviour
             // If the player is alive
             if (isAlive)
             {
+                // play a grunt sound
+                SoundManager.instance.PlayGrunt();
 
-                // Play the Whoosh2 Sound
-                SoundManager.instance.PlaySound("Whoosh2");
+                // Play a whoosh Sound
+                SoundManager.instance.PlayWhoosh();
 
                 // Set weapon animator trigger to attack
                 weaponAnimator.SetTrigger("Attack");
