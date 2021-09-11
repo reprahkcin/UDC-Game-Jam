@@ -5,29 +5,32 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // ------------------------------------------------
+    // Singleton
+    // ------------------------------------------------
+
+    public static Player instance;
+
+
     // -------------------------------------------------
     // GameObjects and Components
     // -------------------------------------------------
-
-    // GameManager
-    private GameManager gameManager;
 
     // Weapon Animator
     // TODO: Add this in the inspector
     public Animator weaponAnimator;
 
     // Animator
-    private Animator animator;
-
-    // Player movement script
-    private PlayerMovement playerMovement;
-
+    public Animator animator;
 
     // -------------------------------------------------
     // Stats
     // -------------------------------------------------
     // Health
     public int health = 100;
+
+    // Attack Damage
+    public int attackDamage = 15;
 
     // Bool isAlive
     private bool isAlive = true;
@@ -107,7 +110,7 @@ public class Player : MonoBehaviour
         // Relase the swarm of rats
         //gameManager.DeathSwarm();
 
-        //GameManager.gm.DeathSwarm();
+        //GameManager.instance.DeathSwarm();
 
         // TODO: Death Animation
     }
@@ -117,16 +120,23 @@ public class Player : MonoBehaviour
     // Unity Methods
     // -------------------------------------------------
     //
+    private void Awake()
+    {
+        // Singleton
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
-        // Get the player movement script
-        playerMovement = GetComponent<PlayerMovement>();
-
         // Get the animator
         animator = GetComponent<Animator>();
-
-        // Get the GameManager
-        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
