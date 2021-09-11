@@ -216,12 +216,18 @@ public class Player : MonoBehaviour
         // If mouse button is pressed
         if (Input.GetMouseButtonDown(0))
         {
+
             // If the player is alive
             if (isAlive)
             {
+
+                // Play the Whoosh2 Sound
+                SoundManager.instance.PlaySound("Whoosh2");
+
                 // Set weapon animator trigger to attack
                 weaponAnimator.SetTrigger("Attack");
                 animator.SetTrigger("Attack");
+
             }
         }
     }
