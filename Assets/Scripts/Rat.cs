@@ -121,6 +121,22 @@ public class Rat : MonoBehaviour
     {
         // Subtract damage from health
         health -= damage;
+
+        // RatHit Animation
+        anim.SetBool("isHit", true);
+
+        // wait for 0.1 seconds
+        StartCoroutine(WaitForAnimation());
+
+    }
+
+    // Wait for the RatHit Animation to finish
+    IEnumerator WaitForAnimation()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        // Set RatHit Animation to false
+        anim.SetBool("isHit", false);
     }
 
     // Damage Player
@@ -161,13 +177,22 @@ public class Rat : MonoBehaviour
     // On Trigger Enter
     void OnTriggerEnter2D(Collider2D other)
     {
+        // If the other object is the player and the player is poisoned
+        if (other.gameObject.tag == "Consumer" && Player.instance.isPoisoned)
+        {
+            Debug.Log("Player Poison damage: " + Player.instance.poisonDamage);
+            // take poison damage
+            TakeDamage(Player.instance.poisonDamage);
+
+        }
         // If the other object is the player
-        if (other.gameObject.tag == "Consumer")
+        if (other.gameObject.tag == "Consumer" && !Player.instance.isPoisoned)
         {
             int attackDamageInt = (int)attackDamage;
-            Player.instance.GetComponent<Player>().DamagePlayer(attackDamageInt);
+            Player.instance.DamagePlayer(attackDamageInt);
             Debug.Log("Player Hit");
         }
+
 
         // If the other object is the player's shovel
         if (other.gameObject.tag == "Shovel")
@@ -176,7 +201,7 @@ public class Rat : MonoBehaviour
             isHit = true;
 
             // Take Damage
-            TakeDamage(Player.instance.GetComponent<Player>().attackDamage);
+            TakeDamage(Player.instance.attackDamage);
 
             // Hit Timer
             StartCoroutine(HitTimer(0.05f));

@@ -36,6 +36,15 @@ public class Player : MonoBehaviour
     // Attack Damage
     public int attackDamage = 15;
 
+    // Poison Pickle Damage
+    public int poisonDamage = 100;
+
+    // Poison Pickle Duration
+    public float poisonDuration = 5f;
+
+    // Poison Pickle Boolean
+    public bool isPoisoned = false;
+
     // Bool isAlive
     private bool isAlive = true;
 
@@ -76,10 +85,44 @@ public class Player : MonoBehaviour
     // Interacting with Enemies
     // -------------------------------------------------
 
+    public void PoisonPickle()
+    {
+        // Set isPoisoned to true
+        isPoisoned = true;
+
+        // Set Player spriteRenderer color to green
+        GetComponent<SpriteRenderer>().color = Color.green;
+
+        Debug.Log("Player is poisoned");
+
+        // Wait for poisonDuration
+        StartCoroutine(PoisonPickleTimer());
+    }
+
+    IEnumerator PoisonPickleTimer()
+    {
+        // Wait for poisonDuration
+        yield return new WaitForSeconds(poisonDuration);
+
+        // Set Player spriteRenderer color to white
+        GetComponent<SpriteRenderer>().color = Color.white;
+
+        // Set isPoisoned to false
+        isPoisoned = false;
+    }
+
+
     public void DamagePlayer(int damage)
     {
         // Subtract damage from health
         health -= damage;
+
+        // Loop DamageFlash() 10 times
+        for (int i = 0; i < 10; i++)
+        {
+            // DamageFlash()
+            DamageFlash();
+        }
 
         // If health is more than 100, set it to 100
         if (health > 100)
@@ -101,6 +144,25 @@ public class Player : MonoBehaviour
             // Start the Death Sequence. Most will take place here, but the rat swarm will be handled in the GameManager script
             Death();
         }
+    }
+
+    public void DamageFlash()
+    {
+        // Set Player spriteRenderer color to red
+        GetComponent<SpriteRenderer>().color = Color.red;
+
+        // Wait for 0.1 seconds
+        StartCoroutine(DamageFlashTimer());
+
+    }
+
+    IEnumerator DamageFlashTimer()
+    {
+        // Wait for 0.1 seconds
+        yield return new WaitForSeconds(0.1f);
+
+        // Set Player spriteRenderer color to white
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     // Player death
