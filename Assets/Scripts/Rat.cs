@@ -152,6 +152,12 @@ public class Rat : MonoBehaviour
     // Unity Methods
     // ------------------------------------------------------------------------
 
+    void Start()
+    {
+        // Play Rats audio
+        SoundManager.instance.PlayRat();
+    }
+
     void Update()
     {
         if (isAlive && !isHit)
