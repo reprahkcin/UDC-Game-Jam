@@ -2134,6 +2134,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8097670040813613201, guid: c413021e62cfcdd49807f6265024494c, type: 3}
+      propertyPath: theme1.clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 155bff8c2a523df478c8ff107e08584f, type: 3}
+    - target: {fileID: 8097670040813613201, guid: c413021e62cfcdd49807f6265024494c, type: 3}
+      propertyPath: theme1.loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097670040813613201, guid: c413021e62cfcdd49807f6265024494c, type: 3}
+      propertyPath: theme1.name
+      value: Theme1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097670040813613201, guid: c413021e62cfcdd49807f6265024494c, type: 3}
+      propertyPath: theme1.pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097670040813613201, guid: c413021e62cfcdd49807f6265024494c, type: 3}
+      propertyPath: theme1.volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097670040813613201, guid: c413021e62cfcdd49807f6265024494c, type: 3}
       propertyPath: sounds.Array.size
       value: 2
       objectReference: {fileID: 0}

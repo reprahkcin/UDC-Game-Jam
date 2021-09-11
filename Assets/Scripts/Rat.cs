@@ -230,6 +230,8 @@ public class Rat : MonoBehaviour
         // Change the sprite to dead
         spriteRenderer.sprite = deadSprite;
 
+
+
         // Trigger isDead animation
         anim.SetTrigger("isDead");
 
