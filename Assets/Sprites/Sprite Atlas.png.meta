@@ -175,7 +175,7 @@ TextureImporter:
     second: Shovel_Struck
   - first:
       213: 8553324453568318624
-    second: Sprite Atlas_18
+    second: Rat_hit
   - first:
       213: 501552035981513187
     second: puke
@@ -1312,7 +1312,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite Atlas_18
+      name: Rat_hit
       rect:
         serializedVersion: 2
         x: 274
