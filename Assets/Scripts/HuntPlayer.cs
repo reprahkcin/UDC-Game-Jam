@@ -17,6 +17,9 @@ public class HuntPlayer : MonoBehaviour
     // Enemy script
     private Enemy enemy;
 
+    // HealthBar Canvas
+    public RectTransform healthBarCanvas;
+
     // ------------------------------------------------------------------------
     // Private Variables
     // ------------------------------------------------------------------------
@@ -52,6 +55,16 @@ public class HuntPlayer : MonoBehaviour
         Vector3 direction = player.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rb.rotation = angle - 90;
+
+        // Get Enemy local rotation
+        Vector3 localRotation = transform.localEulerAngles;
+
+        //
+        // Rotate the healthBarCanvas to always stay upright
+        healthBarCanvas.localEulerAngles = new Vector3(0, 0, -(localRotation.z));
+
+
+
     }
 
     // ------------------------------------------------------------------------

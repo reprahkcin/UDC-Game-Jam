@@ -105,9 +105,9 @@ public class Player : MonoBehaviour
         animator.SetBool("isMoving", false);
 
         // Relase the swarm of rats
-        gameManager.DeathSwarm();
+        //gameManager.DeathSwarm();
 
-        GameManager.gm.DeathSwarm();
+        //GameManager.gm.DeathSwarm();
 
         // TODO: Death Animation
     }

@@ -27,9 +27,14 @@ public class Enemy : MonoBehaviour
     // Enemy Animator
     private Animator animator;
 
+
+
     // ------------------------------------------------------------------------
     // Enemy Stats
     // ------------------------------------------------------------------------
+
+    // Enemy Max Health
+    public int maxHealth = 50;
 
     // Enemy Health
     private int health = 50;
@@ -47,6 +52,7 @@ public class Enemy : MonoBehaviour
         return health;
     }
 
+
     // Take damage - Called from player
     public void DamageEnemy(int damage)
     {
@@ -59,6 +65,19 @@ public class Enemy : MonoBehaviour
     {
 
         rb.AddForce(new Vector2(knockBackForce, 0));
+    }
+
+    // Update Rat Health Display
+    public void UpdateHealthDisplay()
+    {
+        // Get the RatHealth script
+        RatHealth healthScript = GetComponent<RatHealth>();
+
+        // Calculate the ratio of health to max health
+        float ratio = (float)health / (float)maxHealth;
+
+        // UpdateHealth(ratio) on RatHealth script
+        healthScript.UpdateHealthBar(ratio);
     }
 
     // ------------------------------------------------------------------------
@@ -93,6 +112,8 @@ public class Enemy : MonoBehaviour
             // Start DeathTimer coroutine
             StartCoroutine(DeathTimer(3f));
         }
+        UpdateHealthDisplay();
+
 
     }
 
