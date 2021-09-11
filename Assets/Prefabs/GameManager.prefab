@@ -47,6 +47,7 @@ MonoBehaviour:
   - {fileID: 6986110361055531888, guid: b7504801e99011c47b62b7cb3192799f, type: 3}
   itemPrefabs:
   - {fileID: 8375120787492839032, guid: 2a04004662aba314ab477406207ed4d7, type: 3}
+  - {fileID: 8142891114349781475, guid: 3c01a3e9b7fa4474ab572aabd9f73d1b, type: 3}
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
