@@ -11,14 +11,8 @@ public class GameManager : MonoBehaviour
     // -------------------------------------------------
 
     // Singleton
-    public static GameManager gm;
+    public static GameManager instance;
 
-    // Emily
-    private GameObject emily;
-
-    // Player Object
-    // TODO: Add prefab from outside scene
-    public GameObject player;
 
     // Enemy Prefabs[]
     // TODO: Add enemies in the inspector
@@ -82,25 +76,15 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         // Singleton
-        if (gm == null)
+        if (instance == null)
         {
-            gm = this;
+            instance = this;
         }
-        else if (gm != this)
+        else if (instance != this)
         {
             Destroy(gameObject);
         }
 
-        // Set Emily
-        emily = GameObject.FindGameObjectWithTag("Emily");
-
-        // Spawn Player
-        // Check if player exists
-        if (GameObject.FindGameObjectWithTag("Player") == null)
-        {
-            // Instantiate player at the center of the screen
-            Instantiate(player, Vector3.zero, Quaternion.identity);
-        }
 
     }
 
@@ -238,14 +222,14 @@ public class GameManager : MonoBehaviour
     public void SpawnHotDog()
     {
         // Player Script
-        Player playerScript = player.GetComponent<Player>();
+        Player playerScript = Player.instance.GetComponent<Player>();
 
         // check player script for hot dog availability
         if (playerScript.GetHotdogs() > 0)
         {
 
             // Trigger Emily Give_Item animation
-            emily.GetComponent<Emily>().GiveItem();
+            Emily.instance.GetComponent<Emily>().GiveItem();
 
             // wait until Emily is in the garage to spawn the hot dog
             StartCoroutine(HotDogTimer(2f));

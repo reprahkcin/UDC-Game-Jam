@@ -93,11 +93,9 @@ GameObject:
   - component: {fileID: 3363265916626560056}
   - component: {fileID: 223692176492412963}
   - component: {fileID: 4554226554456627960}
-  - component: {fileID: 6013159815946933995}
-  - component: {fileID: 1602268522}
   m_Layer: 3
-  m_Name: Sword Holder
-  m_TagString: Consumer
+  m_Name: Shovel Holder
+  m_TagString: Shovel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +141,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923329514405591458}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -162,41 +160,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1.02}
   m_EdgeRadius: 0
---- !u!114 &6013159815946933995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923329514405591458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff4f7021ae88b544d917414b7e4adb58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swordDamage: 10
-  knockBackForce: 10
---- !u!50 &1602268522
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923329514405591458}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!1 &5229670387992852583
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +238,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 6211104642775156530, guid: f6cdd333b0d7a99428574f0d0cde3ff7, type: 3}
+  m_Sprite: {fileID: -9068954923302428308, guid: f6cdd333b0d7a99428574f0d0cde3ff7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -339,9 +302,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.011203051, y: -0.4145228}
+  m_Offset: {x: 0.011203051, y: -0.28674325}
   serializedVersion: 2
-  m_Radius: 0.30539462
+  m_Radius: 0.34190306
 --- !u!114 &5229670387992852582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +332,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponAnimator: {fileID: 223692176492412963}
+  animator: {fileID: 5229670387992852578}
   health: 100
+  attackDamage: 15
   hotdogs: 4
 --- !u!1 &5604802204177026323
 GameObject:
@@ -380,7 +345,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4139910816908748737}
-  - component: {fileID: 2660611826276532487}
   m_Layer: 3
   m_Name: ItemPickerUpper
   m_TagString: Consumer
@@ -402,19 +366,3 @@ Transform:
   m_Father: {fileID: 5229670387992852579}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &2660611826276532487
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5604802204177026323}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5

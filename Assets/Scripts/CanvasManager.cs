@@ -5,23 +5,20 @@ using UnityEngine;
 
 public class CanvasManager : MonoBehaviour
 {
+    // -----------------------------------------------------------
+    // Singleton
+    // -----------------------------------------------------------
+
+    public static CanvasManager instance;
+
     // ------------------------------------------------------------
     // GameObjects
     // ------------------------------------------------------------
+
     // Keep track of all canvases
     public Canvas[] canvases;
 
-    // GameManager
-    public GameManager gameManager;
-
-    // HealthBar: This is the health bar that is displayed on the bottom and consists of a dynamic image.
-    public HealthBar healthBar;
-
-    // Player
-    public GameObject player;
-
-    // Player Script
-    public Player playerScript;
+    public GameObject healthbarForeground;
 
     // ------------------------------------------------------------
     // State Variables
@@ -51,23 +48,27 @@ public class CanvasManager : MonoBehaviour
     public void UpdateHealth()
     {
         // Get Health from Player
-        int playerHealth = playerScript.GetHealth();
+        int playerHealth = Player.instance.GetComponent<Player>().GetHealth();
 
-        // Call function to update health bar
-        healthBar.UpdateHealthBar(playerHealth);
+        // Calculate ratio
+        float ratio = playerHealth / 100;
+
+        // Apply health ratio to local scale of HealthBarForeground
+        //healthbarForeground.GetComponent<RectTransform>().localScale = new Vector3(ratio, 1f,1f);
     }
 
     public void UpdateScore()
     {
-        // Get Score from GameManager
-        int score = gameManager.GetScore();
+        // Get Score from GameManager instance
+        int score = GameManager.instance.GetComponent<GameManager>().GetScore();
+
         // Update the score UI
         scoreText.text = "Score: " + score;
     }
     public void UpdateHotDog()
     {
         // Get Hot Dogs from Player
-        int hotDogs = player.GetComponent<Player>().GetHotdogs();
+        int hotDogs = Player.instance.GetHotdogs();
         // Update the hot dog UI Text
         hotDogText.text = "Hot Dogs: " + hotDogs;
     }
@@ -135,6 +136,21 @@ public class CanvasManager : MonoBehaviour
     // ------------------------------------------------------------
     // Unity Methods
     // ------------------------------------------------------------
+    void Awake()
+    {
+        // Singleton
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+
     void Start()
     {
         // Deactivate all canvases
@@ -148,10 +164,6 @@ public class CanvasManager : MonoBehaviour
 
         // Activate the current canvas
         currentCanvas.gameObject.SetActive(true);
-
-        // Get the player
-        player = GameObject.FindGameObjectWithTag("Player");
-
 
     }
 
