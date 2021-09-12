@@ -141,6 +141,10 @@ public class Player : MonoBehaviour
             // Inform the family that the player is dead
             Debug.Log("He ded.");
 
+
+            // Set isDying to true
+            isDying = true;
+
             // Start the Death Sequence. Most will take place here, but the rat swarm will be handled in the GameManager script
             Death();
         }
@@ -168,6 +172,8 @@ public class Player : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.white;
     }
 
+
+    public bool isDying = false;
     // Player death
     public void Death()
     {
@@ -177,6 +183,20 @@ public class Player : MonoBehaviour
 
         // Change the animation to Player_Idle_Down
         animator.SetBool("isMoving", false);
+
+        // Stop the theme1 music
+        SoundManager.instance.StopTheme1();
+
+
+        if (isDying)
+        {
+            // Play the death sound
+            SoundManager.instance.PlayDeath1();
+
+            // set isDying to false
+            isDying = false;
+        }
+
 
         // Relase the swarm of rats
         //gameManager.DeathSwarm();

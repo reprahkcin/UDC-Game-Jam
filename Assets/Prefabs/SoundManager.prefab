@@ -44,9 +44,149 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Whoosh2
+    clip: {fileID: 8300000, guid: bfb5edb1370fd5e4f88da41e5a1f7527, type: 3}
+    volume: 1
+    pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Whoosh1
+    clip: {fileID: 8300000, guid: 478bbfef63ac8154682771ca4c4093bc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  whooshSounds:
+  - name: Whoosh1
+    clip: {fileID: 8300000, guid: 478bbfef63ac8154682771ca4c4093bc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Whoosh2
+    clip: {fileID: 8300000, guid: bfb5edb1370fd5e4f88da41e5a1f7527, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  gruntSounds:
+  - name: Grunt1
+    clip: {fileID: 8300000, guid: 5ba845011719c634bb220e9598e6a470, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Grunt2
+    clip: {fileID: 8300000, guid: 8625344b2e5959140a0a605d480325ab, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Grunt3
+    clip: {fileID: 8300000, guid: d7639d4156818304fb3e752525cd969c, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Grunt4
+    clip: {fileID: 8300000, guid: 206a6147d0759c945acd1dd511ec2765, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Grunt5
+    clip: {fileID: 8300000, guid: 6c295e7fb90216b4cb484667bdccb8d4, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Grunt6
+    clip: {fileID: 8300000, guid: e2f5afe9ebac0634988095772507264f, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Grunt7
+    clip: {fileID: 8300000, guid: 802f315a6a2eca347abf0c8dcf1d4700, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Grunt8
+    clip: {fileID: 8300000, guid: 5040876ebdaa98143ba502f1d71ae165, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  hurtSounds:
+  - name: Hurt1
+    clip: {fileID: 8300000, guid: 940395b676942d5449cbdccb5d223772, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hurt2
+    clip: {fileID: 8300000, guid: fd218d3b04634a749a4ab5bbc29b5f94, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  eatingSounds:
+  - name: Eating1
+    clip: {fileID: 8300000, guid: cfd35d854b37b6e4fb32cf5d8bada67a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Eating2
+    clip: {fileID: 8300000, guid: 275b7f255567ebd4db15800076d63a08, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  ratSounds:
+  - name: Rats1
+    clip: {fileID: 8300000, guid: e0c0c56753b343947bcc842e689505b1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Rats2
+    clip: {fileID: 8300000, guid: 0fa42e7b092f51149b2451974718cd5e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Rats3
+    clip: {fileID: 8300000, guid: b4c5d2308a7adf54092d0e13c045be76, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Rats4
+    clip: {fileID: 8300000, guid: 3ab3c2ff16f18844ea51d107ac867365, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Rats5
+    clip: {fileID: 8300000, guid: c74df514911ce7b4b8d6f1f035f1de2b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  theme1:
+    name: Theme1
+    clip: {fileID: 8300000, guid: 155bff8c2a523df478c8ff107e08584f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  death1:
+    name: Death1
+    clip: {fileID: 8300000, guid: e70ace6a6cad92d40b638d6d7046faa0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  ratSoundsPlaying: []

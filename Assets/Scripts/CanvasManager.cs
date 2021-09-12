@@ -161,6 +161,9 @@ public class CanvasManager : MonoBehaviour
         // Set the current canvas to the currentCanvasIndex
         currentCanvas = canvases[currentCanvasIndex];
 
+        // Play theme2 music
+        SoundManager.instance.PlayTheme2();
+
         // Activate the current canvas
         currentCanvas.gameObject.SetActive(true);
 

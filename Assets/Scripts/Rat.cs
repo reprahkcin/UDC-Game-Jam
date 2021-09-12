@@ -33,7 +33,8 @@ public class Rat : MonoBehaviour
     public GameObject healthBar;
 
     // Speed of the Rat
-    private float speed = 1.0f;
+    [Range(0.5f, 2.0f)]
+    public float speed = 1.0f;
 
     // Max Health of the Rat
     private float maxHealth = 50.0f;
@@ -42,7 +43,7 @@ public class Rat : MonoBehaviour
     public float health = 50.0f;
 
     // Rat Attack Damage
-    private float attackDamage = 1f;
+    public float attackDamage = 1f;
 
     // Point value of the Rat
     private int pointValue = 10;
@@ -186,7 +187,7 @@ public class Rat : MonoBehaviour
         // If the other object is the player and the player is poisoned
         if (other.gameObject.tag == "Consumer" && Player.instance.isPoisoned)
         {
-            Debug.Log("Player Poison damage: " + Player.instance.poisonDamage);
+            //Debug.Log("Player Poison damage: " + Player.instance.poisonDamage);
             // take poison damage
             TakeDamage(Player.instance.poisonDamage);
 
@@ -196,7 +197,7 @@ public class Rat : MonoBehaviour
         {
             int attackDamageInt = (int)attackDamage;
             Player.instance.DamagePlayer(attackDamageInt);
-            Debug.Log("Player Hit");
+            //Debug.Log("Player Hit");
         }
 
 

@@ -24,6 +24,10 @@ public class SoundManager : MonoBehaviour
 
     public Sound theme1;
 
+    public Sound theme2;
+
+    public Sound death1;
+
     // Keep track of all playing rat sounds with a list
     public List<AudioSource> ratSoundsPlaying;
 
@@ -100,6 +104,19 @@ public class SoundManager : MonoBehaviour
         theme1.source.volume = theme1.volume;
         theme1.source.pitch = theme1.pitch;
         theme1.source.loop = theme1.loop;
+
+        theme2.source = gameObject.AddComponent<AudioSource>();
+        theme2.source.clip = theme2.clip;
+        theme2.source.volume = theme2.volume;
+        theme2.source.pitch = theme2.pitch;
+        theme2.source.loop = theme2.loop;
+
+        death1.source = gameObject.AddComponent<AudioSource>();
+        death1.source.clip = death1.clip;
+        death1.source.volume = death1.volume;
+        death1.source.pitch = death1.pitch;
+        death1.source.loop = death1.loop;
+
 
         ratSoundsPlaying = new List<AudioSource>();
     }
@@ -179,6 +196,39 @@ public class SoundManager : MonoBehaviour
     public void StopTheme1()
     {
         theme1.source.Stop();
+    }
+
+    public void PlayTheme2()
+    {
+        theme2.source.Play();
+    }
+
+    public void StopTheme2()
+    {
+        // Fade the volume down over 1 second
+        StartCoroutine(FadeOut(theme2.source, 1f));
+
+        theme2.source.Stop();
+    }
+
+    IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+    {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
+    }
+
+    public void PlayDeath1()
+    {
+        death1.source.Play();
     }
 
 }

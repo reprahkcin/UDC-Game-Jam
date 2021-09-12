@@ -55,7 +55,9 @@ MonoBehaviour:
   deadSprite: {fileID: -5413523621558687431, guid: f6cdd333b0d7a99428574f0d0cde3ff7, type: 3}
   healthBarCanvas: {fileID: 6986110362626815628}
   healthBar: {fileID: 6986110363082644894}
+  speed: 2
   health: 50
+  attackDamage: 10
 --- !u!50 &6986110361055531895
 Rigidbody2D:
   serializedVersion: 4
