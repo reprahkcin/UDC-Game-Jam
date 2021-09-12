@@ -57,7 +57,7 @@ MonoBehaviour:
   healthBar: {fileID: 6986110363082644894}
   speed: 2
   health: 50
-  attackDamage: 2
+  attackDamage: 3
 --- !u!50 &6986110361055531895
 Rigidbody2D:
   serializedVersion: 4

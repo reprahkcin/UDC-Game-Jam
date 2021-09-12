@@ -10,7 +10,6 @@ public class HotDog : MonoBehaviour
 
     public GameObject pickupEffect;
 
-
     // 2d trigger enter
     void OnTriggerEnter2D(Collider2D other)
 
@@ -22,6 +21,9 @@ public class HotDog : MonoBehaviour
     }
     void Pickup()
     {
+        // Bring up the banner
+        CanvasManager.instance.ActivateHotDogDetails();
+
         // Play Eating sound
         SoundManager.instance.PlayEating();
 

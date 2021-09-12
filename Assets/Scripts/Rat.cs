@@ -153,6 +153,22 @@ public class Rat : MonoBehaviour
     // Unity Methods
     // ------------------------------------------------------------------------
 
+    void Awake()
+    {
+        // Randomize the speed of the Rat
+        speed = Random.Range(0.5f, 2.0f);
+
+        // Randomize the max health of the Rat
+        maxHealth = Random.Range(50.0f, 100.0f);
+
+        // Set the health of the Rat to max health
+        health = maxHealth;
+
+        // Calculate the point value of the Rat
+        pointValue = (int)maxHealth * (int)speed;
+
+    }
+
     void Start()
     {
         // Play Rats audio

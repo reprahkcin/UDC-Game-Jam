@@ -22,6 +22,13 @@ public class SoundManager : MonoBehaviour
 
     public Sound[] ratSounds;
 
+    public Sound[] HotDogSounds;
+
+    public Sound[] PickleSounds;
+
+    public Sound[] ShovelSounds;
+
+
     public Sound theme1;
 
     public Sound theme2;
@@ -117,6 +124,33 @@ public class SoundManager : MonoBehaviour
         death1.source.pitch = death1.pitch;
         death1.source.loop = death1.loop;
 
+        foreach (Sound sound in HotDogSounds)
+        {
+            sound.source = gameObject.AddComponent<AudioSource>();
+            sound.source.clip = sound.clip;
+            sound.source.volume = sound.volume;
+            sound.source.pitch = sound.pitch;
+            sound.source.loop = sound.loop;
+        }
+
+        foreach (Sound sound in PickleSounds)
+        {
+            sound.source = gameObject.AddComponent<AudioSource>();
+            sound.source.clip = sound.clip;
+            sound.source.volume = sound.volume;
+            sound.source.pitch = sound.pitch;
+            sound.source.loop = sound.loop;
+        }
+
+        // foreach (Sound sound in ShovelSounds)
+        // {
+        //     sound.source = gameObject.AddComponent<AudioSource>();
+        //     sound.source.clip = sound.clip;
+        //     sound.source.volume = sound.volume;
+        //     sound.source.pitch = sound.pitch;
+        //     sound.source.loop = sound.loop;
+        // }
+
 
         ratSoundsPlaying = new List<AudioSource>();
     }
@@ -187,6 +221,28 @@ public class SoundManager : MonoBehaviour
         ratSoundsPlaying.Add(s.source);
 
     }
+
+    public void PlayHotDog()
+    {
+        // Randomly select a sound from the HotDogSounds array
+        Sound s = HotDogSounds[UnityEngine.Random.Range(0, HotDogSounds.Length)];
+        s.source.Play();
+    }
+
+    public void PlayPickle()
+    {
+        // Randomly select a sound from the PickleSounds array
+        Sound s = PickleSounds[UnityEngine.Random.Range(0, PickleSounds.Length)];
+        s.source.Play();
+    }
+
+    // public void PlayShovel()
+    // {
+    //     // Randomly select a sound from the ShovelSounds array
+    //     Sound s = ShovelSounds[UnityEngine.Random.Range(0, ShovelSounds.Length)];
+    //     s.source.Play();
+    // }
+
 
     public void PlayTheme1()
     {

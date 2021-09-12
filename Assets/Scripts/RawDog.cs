@@ -18,25 +18,14 @@ public class RawDog : MonoBehaviour
         }
     }
 
-    void DisplayDetails()
-    {
-        details.SetActive(true);
-        //Wait for 5 seconds
-        StartCoroutine(HideDetails());
-    }
-
-    IEnumerator HideDetails()
-    {
-        yield return new WaitForSeconds(5);
-        details.SetActive(false);
-    }
 
     void Pickup()
     {
 
 
+
         // Display details
-        DisplayDetails();
+        CanvasManager.instance.ActivateRawDogDetails();
 
         // Play Eating sound
         SoundManager.instance.PlayEating();
@@ -56,10 +45,10 @@ public class RawDog : MonoBehaviour
         // Wait for 5 seconds
         StartCoroutine(Wait());
 
+        // Set self to inactive
+        gameObject.SetActive(false);
 
 
-        // Destroy item
-        Destroy(gameObject);
     }
 
     IEnumerator Wait()
@@ -67,9 +56,13 @@ public class RawDog : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         // Restore player movement speed
-        Player.instance.SetSpeed(Player.instance.moveSpeed * 2.0f);
+        Player.instance.SetSpeed(5f);
 
         // Lower attack damage
         Player.instance.attackDamage -= 10;
+
+
+        // Destroy item
+        Destroy(gameObject);
     }
 }
