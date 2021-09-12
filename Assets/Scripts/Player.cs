@@ -48,8 +48,8 @@ public class Player : MonoBehaviour
     // Bool isAlive
     private bool isAlive = true;
 
-    // Number of Hotdogs Available
-    public int hotdogs = 5;
+    // Number Help Requests
+    public int helpRequests = 5;
 
     // -------------------------------------------------
     // UI/Game Getters
@@ -62,17 +62,19 @@ public class Player : MonoBehaviour
 
     }
 
-    // Hotdogs
-    public int GetHotdogs()
+    // Help Requests
+    public int GetHelpRequests()
     {
-        return hotdogs;
+        // Return current help requests
+        return helpRequests;
     }
 
-    // Set Hotdogs
-    public void SetHotdogs(int newHotdogs)
+    public int SetHelpRequests(int newHelpRequests)
     {
-        hotdogs = newHotdogs;
+        // Set new help requests
+        return helpRequests = newHelpRequests;
     }
+
 
     // Check if player is alive
     public bool isAliveBool()
@@ -180,6 +182,9 @@ public class Player : MonoBehaviour
         // Set isAlive to false
         // This should stop movement and attack capabilities, as they both check
         isAlive = false;
+
+        // Rigiddbody isSimulated to false
+        GetComponent<Rigidbody2D>().simulated = false;
 
         // Change the animation to Player_Idle_Down
         animator.SetBool("isMoving", false);
