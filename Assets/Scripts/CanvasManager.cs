@@ -24,6 +24,7 @@ public class CanvasManager : MonoBehaviour
     // Emily Icons in order
     public GameObject[] emilyIcons;
 
+
     // ------------------------------------------------------------
     // State Variables
     // ------------------------------------------------------------

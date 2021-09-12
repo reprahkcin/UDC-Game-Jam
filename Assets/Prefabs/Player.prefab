@@ -259,7 +259,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 5690879797924838250, guid: f6cdd333b0d7a99428574f0d0cde3ff7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -340,7 +340,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponAnimator: {fileID: 223692176492412963}
-  moveSpeed: 5
 --- !u!114 &5933988518562696146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,10 +357,12 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   attackDamage: 15
+  moveSpeed: 5
   poisonDamage: 10
   poisonDuration: 5
   isPoisoned: 0
-  hotdogs: 4
+  helpRequests: 5
+  isDying: 0
 --- !u!1 &5604802204177026323
 GameObject:
   m_ObjectHideFlags: 0
