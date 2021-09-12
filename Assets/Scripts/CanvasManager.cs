@@ -64,12 +64,12 @@ public class CanvasManager : MonoBehaviour
         // Update the score UI
         scoreText.text = "Score: " + score;
     }
-    public void UpdateHotDog()
+    public void UpdateHelpRequests()
     {
         // Get Hot Dogs from Player
-        int hotDogs = Player.instance.GetHotdogs();
-        // Update the hot dog UI Text
-        hotDogText.text = "Hot Dogs: " + hotDogs;
+        int helpReuests = Player.instance.GetHelpRequests();
+        // Update the Help Requests UI Text
+        hotDogText.text = "Help Requests: " + helpReuests;
     }
 
     // ------------------------------------------------------------
@@ -177,7 +177,7 @@ public class CanvasManager : MonoBehaviour
         // Update the score
         UpdateScore();
 
-        // Update the hot dog count
-        UpdateHotDog();
+        // Update the help requests count
+        UpdateHelpRequests();
     }
 }

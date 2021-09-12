@@ -29,7 +29,7 @@ public class HotDog : MonoBehaviour
         Instantiate(pickupEffect, transform.position, transform.rotation);
 
         // Find the player script
-        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        Player player = Player.instance.GetComponent<Player>();
         // Add health
         player.DamagePlayer(-health);
 

@@ -182,6 +182,13 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  theme2:
+    name: Theme2
+    clip: {fileID: 8300000, guid: 73d68c1bc1334fa47841a71e774ad8ca, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   death1:
     name: Death1
     clip: {fileID: 8300000, guid: e70ace6a6cad92d40b638d6d7046faa0, type: 3}

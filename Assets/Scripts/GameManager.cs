@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     // TODO: Add spawn points in the inspector
     public Transform[] spawnPoints;
 
+    public Transform itemSpawnPoint;
+
     // -------------------------------------------------
     // Gameplay Variables
     // -------------------------------------------------
@@ -88,14 +90,39 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void RandomItemSpawn()
+    {
+        // Select a random item from the array
+        int randomItem = Random.Range(0, itemPrefabs.Length);
+
+        // Switch case for the random item
+        switch (randomItem)
+        {
+            case 0:
+                // Spawn Hotdog
+                SpawnHotDog();
+                break;
+            case 1:
+                // Spawn Pickle
+                SpawnPickle();
+                break;
+
+            default:
+                // Spawn Hotdog
+                SpawnHotDog();
+                break;
+        }
+    }
+
 
     private void Update()
     {
         // listen for right mouse click
         if (Input.GetMouseButtonDown(1))
         {
-            SpawnHotDog();
+            RandomItemSpawn();
         }
+
     }
 
 
@@ -191,10 +218,26 @@ public class GameManager : MonoBehaviour
     IEnumerator HotDogTimer(float time)
     {
         yield return new WaitForSeconds(time);
-        // spawn hot dog at spawnPoint[1]
-        Instantiate(itemPrefabs[0], spawnPoints[1].position, Quaternion.identity);
+        // spawn hot dog at item spawn point
+        Instantiate(itemPrefabs[0], itemSpawnPoint.position, Quaternion.identity);
 
     }
+
+    IEnumerator PickleTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // spawn pickle at itemSpawnPoint
+        Instantiate(itemPrefabs[1], itemSpawnPoint.position, Quaternion.identity);
+    }
+
+    IEnumerator RawDogTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // spawn raw dog at itemSpawnPoint
+        Instantiate(itemPrefabs[2], itemSpawnPoint.position, Quaternion.identity);
+    }
+
+
 
 
     // -------------------------------------------------
@@ -227,7 +270,7 @@ public class GameManager : MonoBehaviour
         Player playerScript = Player.instance.GetComponent<Player>();
 
         // check player script for hot dog availability
-        if (playerScript.GetHotdogs() > 0)
+        if (playerScript.GetHelpRequests() > 0)
         {
 
             // Trigger Emily Give_Item animation
@@ -236,12 +279,61 @@ public class GameManager : MonoBehaviour
             // wait until Emily is in the garage to spawn the hot dog
             StartCoroutine(HotDogTimer(2f));
 
-            // decrement hot dogs
-            playerScript.SetHotdogs(playerScript.GetHotdogs() - 1);
+            // decrement help requests
+            playerScript.SetHelpRequests(playerScript.GetHelpRequests() - 1);
 
 
         }
     }
+
+    // Spawn a Pickle
+    public void SpawnPickle()
+    {
+        // Player Script
+        Player playerScript = Player.instance.GetComponent<Player>();
+
+        // check player script for hot dog availability
+        if (playerScript.GetHelpRequests() > 0)
+        {
+
+            // Trigger Emily Give_Item animation
+            Emily.instance.GetComponent<Emily>().GiveItem();
+
+            // wait until Emily is in the garage to spawn the pickle
+            StartCoroutine(PickleTimer(2f));
+
+            // decrement help requests
+            playerScript.SetHelpRequests(playerScript.GetHelpRequests() - 1);
+
+
+        }
+    }
+
+    // Spawn Raw Dog
+    public void SpawnRawDog()
+    {
+        // Player Script
+        Player playerScript = Player.instance.GetComponent<Player>();
+
+        // check player script for hot dog availability
+        if (playerScript.GetHelpRequests() > 0)
+        {
+
+            // Trigger Emily Give_Item animation
+            Emily.instance.GetComponent<Emily>().GiveItem();
+
+            // wait until Emily is in the garage to spawn the raw dog
+            StartCoroutine(RawDogTimer(2f));
+
+            // decrement help requests
+            playerScript.SetHelpRequests(playerScript.GetHelpRequests() - 1);
+
+
+        }
+    }
+
+
+
 
 
 }

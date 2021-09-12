@@ -53,6 +53,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  itemSpawnPoint: {fileID: 0}
   spawnTimer: 2.18
   enemiesPerWave: 37
   enemies: []

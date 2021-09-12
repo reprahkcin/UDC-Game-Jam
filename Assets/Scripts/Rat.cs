@@ -93,7 +93,7 @@ public class Rat : MonoBehaviour
 
     public void KnockBack()
     {
-        rb.velocity = transform.up * speed * -40;
+        rb.velocity = transform.up * speed * -20;
     }
 
     // ------------------------------------------------------------------------
