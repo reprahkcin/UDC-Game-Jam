@@ -17,8 +17,7 @@ public class PlayerMovement : MonoBehaviour
     // Weapon Animator
     public Animator weaponAnimator;
 
-    // Float for moveSpeed
-    public float moveSpeed = 5f;
+
 
     // Player script
     private Player player;
@@ -52,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         if (player.isAliveBool())
         {
             // Move the player
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movement * Player.instance.moveSpeed * Time.fixedDeltaTime);
         }
     }
 

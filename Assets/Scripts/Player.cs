@@ -36,6 +36,9 @@ public class Player : MonoBehaviour
     // Attack Damage
     public int attackDamage = 15;
 
+    // Float for moveSpeed
+    public float moveSpeed = 5f;
+
     // Poison Pickle Damage
     public int poisonDamage = 100;
 
@@ -67,6 +70,12 @@ public class Player : MonoBehaviour
     {
         // Return current help requests
         return helpRequests;
+    }
+
+    // Set Speed
+    public void SetSpeed(float speed)
+    {
+        moveSpeed = speed;
     }
 
     public int SetHelpRequests(int newHelpRequests)
@@ -151,6 +160,19 @@ public class Player : MonoBehaviour
             Death();
         }
     }
+
+    public void AddHealth(int healthToAdd)
+    {
+        // Add healthToAdd to health
+        health += healthToAdd;
+
+        // If health is more than 100, set it to 100
+        if (health > 100)
+        {
+            health = 100;
+        }
+    }
+
 
     public void DamageFlash()
     {

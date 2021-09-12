@@ -12,6 +12,7 @@ TagManager:
   - Emily
   - Shovel
   - Pickle
+  - Details
   layers:
   - Default
   - TransparentFX
