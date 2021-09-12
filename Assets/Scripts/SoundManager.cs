@@ -22,12 +22,19 @@ public class SoundManager : MonoBehaviour
 
     public Sound[] ratSounds;
 
-    public Sound[] HotDogSounds;
+    public Sound[] hotDogSounds;
 
-    public Sound[] PickleSounds;
+    public Sound[] pickleSounds;
 
-    public Sound[] ShovelSounds;
+    public Sound[] shovelSounds;
 
+    public Sound[] shovelHittingRatSounds;
+
+    public Sound[] rickRequestingHelpSounds;
+
+    public Sound DoorOpeningSound;
+
+    public Sound DoorClosingSound;
 
     public Sound theme1;
 
@@ -35,8 +42,6 @@ public class SoundManager : MonoBehaviour
 
     public Sound death1;
 
-    // Keep track of all playing rat sounds with a list
-    public List<AudioSource> ratSoundsPlaying;
 
     void Awake()
     {
@@ -124,7 +129,19 @@ public class SoundManager : MonoBehaviour
         death1.source.pitch = death1.pitch;
         death1.source.loop = death1.loop;
 
-        foreach (Sound sound in HotDogSounds)
+        DoorClosingSound.source = gameObject.AddComponent<AudioSource>();
+        DoorClosingSound.source.clip = DoorClosingSound.clip;
+        DoorClosingSound.source.volume = DoorClosingSound.volume;
+        DoorClosingSound.source.pitch = DoorClosingSound.pitch;
+        DoorClosingSound.source.loop = DoorClosingSound.loop;
+
+        DoorOpeningSound.source = gameObject.AddComponent<AudioSource>();
+        DoorOpeningSound.source.clip = DoorOpeningSound.clip;
+        DoorOpeningSound.source.volume = DoorOpeningSound.volume;
+        DoorOpeningSound.source.pitch = DoorOpeningSound.pitch;
+        DoorOpeningSound.source.loop = DoorOpeningSound.loop;
+
+        foreach (Sound sound in hotDogSounds)
         {
             sound.source = gameObject.AddComponent<AudioSource>();
             sound.source.clip = sound.clip;
@@ -133,7 +150,7 @@ public class SoundManager : MonoBehaviour
             sound.source.loop = sound.loop;
         }
 
-        foreach (Sound sound in PickleSounds)
+        foreach (Sound sound in pickleSounds)
         {
             sound.source = gameObject.AddComponent<AudioSource>();
             sound.source.clip = sound.clip;
@@ -142,35 +159,53 @@ public class SoundManager : MonoBehaviour
             sound.source.loop = sound.loop;
         }
 
-        // foreach (Sound sound in ShovelSounds)
-        // {
-        //     sound.source = gameObject.AddComponent<AudioSource>();
-        //     sound.source.clip = sound.clip;
-        //     sound.source.volume = sound.volume;
-        //     sound.source.pitch = sound.pitch;
-        //     sound.source.loop = sound.loop;
-        // }
+        foreach (Sound sound in shovelSounds)
+        {
+            sound.source = gameObject.AddComponent<AudioSource>();
+            sound.source.clip = sound.clip;
+            sound.source.volume = sound.volume;
+            sound.source.pitch = sound.pitch;
+            sound.source.loop = sound.loop;
+        }
+
+        foreach (Sound sound in shovelHittingRatSounds)
+        {
+            sound.source = gameObject.AddComponent<AudioSource>();
+            sound.source.clip = sound.clip;
+            sound.source.volume = sound.volume;
+            sound.source.pitch = sound.pitch;
+            sound.source.loop = sound.loop;
+        }
+
+        foreach (Sound sound in rickRequestingHelpSounds)
+        {
+            sound.source = gameObject.AddComponent<AudioSource>();
+            sound.source.clip = sound.clip;
+            sound.source.volume = sound.volume;
+            sound.source.pitch = sound.pitch;
+            sound.source.loop = sound.loop;
+        }
 
 
-        ratSoundsPlaying = new List<AudioSource>();
+
     }
 
     void Update()
     {
-        // Get the number of active rats by getting the count of the enemies list in the game manager
-        int numActiveRats = GameManager.instance.enemies.Count;
-
-        // If numActiveRats is less than the number of active rat sounds, stop the extra sounds
-        if (numActiveRats < ratSoundsPlaying.Count)
+        if (RatSounds.Count > GameManager.instance.enemies.Count)
         {
-            for (int i = numActiveRats; i < ratSoundsPlaying.Count; i++)
+            // Destroy sounds until the numers match
+            for (int i = 0; i < RatSounds.Count - GameManager.instance.enemies.Count; i++)
             {
-                //Turn off looping
-                ratSoundsPlaying[i].loop = false;
-                ratSoundsPlaying[i].Stop();
+                RatSounds.RemoveAt(0);
             }
+
+
+
+
         }
     }
+
 
     public void PlaySound(string name)
     {
@@ -212,36 +247,63 @@ public class SoundManager : MonoBehaviour
         s.source.Play();
     }
 
+    // Make a list of all active rat sounds
+    public List<Sound> RatSounds;
+
     public void PlayRat()
     {
         // Randomly select a sound from the rat array
-        Sound s = ratSounds[UnityEngine.Random.Range(0, ratSounds.Length)];
-        s.source.Play();
-        // Add the sound to the list of active rat sounds
-        ratSoundsPlaying.Add(s.source);
-
+        Sound rat = ratSounds[UnityEngine.Random.Range(0, ratSounds.Length)];
+        rat.source.Play();
+        // Add the rat sound to the list of active rat sounds
+        RatSounds.Add(rat);
     }
+
 
     public void PlayHotDog()
     {
         // Randomly select a sound from the HotDogSounds array
-        Sound s = HotDogSounds[UnityEngine.Random.Range(0, HotDogSounds.Length)];
+        Sound s = hotDogSounds[UnityEngine.Random.Range(0, hotDogSounds.Length)];
         s.source.Play();
     }
 
     public void PlayPickle()
     {
         // Randomly select a sound from the PickleSounds array
-        Sound s = PickleSounds[UnityEngine.Random.Range(0, PickleSounds.Length)];
+        Sound s = pickleSounds[UnityEngine.Random.Range(0, pickleSounds.Length)];
         s.source.Play();
     }
 
-    // public void PlayShovel()
-    // {
-    //     // Randomly select a sound from the ShovelSounds array
-    //     Sound s = ShovelSounds[UnityEngine.Random.Range(0, ShovelSounds.Length)];
-    //     s.source.Play();
-    // }
+    public void PlayShovel()
+    {
+        // Randomly select a sound from the ShovelSounds array
+        Sound s = shovelSounds[UnityEngine.Random.Range(0, shovelSounds.Length)];
+        s.source.Play();
+    }
+
+    public void PlayShovelHittingRat()
+    {
+        // Randomly select a sound from the ShovelHittingRatSounds array
+        Sound s = shovelHittingRatSounds[UnityEngine.Random.Range(0, shovelHittingRatSounds.Length)];
+        s.source.Play();
+    }
+
+    public void PlayRickRequestingHelp()
+    {
+        // Randomly select a sound from the RickRequestingHelpSounds array
+        Sound s = rickRequestingHelpSounds[UnityEngine.Random.Range(0, rickRequestingHelpSounds.Length)];
+        s.source.Play();
+    }
+
+    public void PlayDoorOpening()
+    {
+        DoorOpeningSound.source.Play();
+    }
+
+    public void PlayDoorClosing()
+    {
+        DoorClosingSound.source.Play();
+    }
 
 
     public void PlayTheme1()

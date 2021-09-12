@@ -33,6 +33,15 @@ public class CanvasManager : MonoBehaviour
     // Pickle details
     public GameObject pickleDetails;
 
+    // Wave Number Canvas
+    public GameObject waveNumberCanvas;
+
+    // Wave Number Text
+    public TextMeshProUGUI waveNumberText;
+
+    // Game Over Text
+    public TextMeshProUGUI gameOverText;
+
 
     // ------------------------------------------------------------
     // State Variables
@@ -95,6 +104,15 @@ public class CanvasManager : MonoBehaviour
                 emilyIcons[i].SetActive(false);
             }
         }
+    }
+
+    public void UpdateWaveNumberText()
+    {
+        // Get wave number from GameManager instance
+        int waveNumber = GameManager.instance.GetComponent<GameManager>().GetWaveNumber();
+
+        // Update the wave number UI
+        waveNumberText.text = "Wave: " + waveNumber;
     }
 
     public void ActivateHotDogDetails()
@@ -244,5 +262,8 @@ public class CanvasManager : MonoBehaviour
 
         // Update Emily Icons
         UpdateEmilyIcons();
+
+        // Update Wave Number
+        UpdateWaveNumberText();
     }
 }

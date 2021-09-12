@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public Transform itemSpawnPoint;
 
+    public GameObject InterRoundCanvas;
+
     // -------------------------------------------------
     // Gameplay Variables
     // -------------------------------------------------
@@ -66,12 +68,18 @@ public class GameManager : MonoBehaviour
     // -------------------------------------------------
 
     // Current wave
-    private int currentWave = 0;
+    private int currentWave = 1;
+
+    // Total Waves
+    private int totalWaves = 10;
 
     // Score
     public int score = 0;
 
-
+    public int GetWaveNumber()
+    {
+        return currentWave;
+    }
 
     // -------------------------------------------------
     // Unity Functions
@@ -126,8 +134,13 @@ public class GameManager : MonoBehaviour
         // listen for right mouse click
         if (Input.GetMouseButtonDown(1))
         {
+            // Play RickRequestingHelp
+            SoundManager.instance.PlayRickRequestingHelp();
+
             RandomItemSpawn();
         }
+
+
 
     }
 
@@ -162,7 +175,7 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.PlayTheme1();
 
         // Start wave
-        StartCoroutine(SpawnWave(spawnTimer));
+        StartCoroutine(InBetweenWaves());
 
     }
 
@@ -202,6 +215,7 @@ public class GameManager : MonoBehaviour
         // Spawn enemies
         for (int i = 0; i < enemiesPerWave; i++)
         {
+
             // Get random enemy
             int randomEnemy = Random.Range(0, enemyPrefabs.Length);
 
@@ -217,10 +231,48 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(timeDelay);
         }
 
+        StartCoroutine(InBetweenWaves());
 
         // Increment wave
         currentWave++;
     }
+
+    IEnumerator InBetweenWaves()
+    {
+        //If the current wave is less than the total waves
+        if (currentWave <= totalWaves)
+        {
+
+            //  Display "Wave X"
+            InterRoundCanvas.SetActive(true);
+
+            // Wait for 3 seconds
+            yield return new WaitForSeconds(3f);
+
+            // Hide "Wave X"
+            InterRoundCanvas.SetActive(false);
+
+            // Check how many helprequests the player has
+            if (Player.instance.GetHelpRequests() < 5)
+            {
+                // add a help request
+                Player.instance.addHelpRequest();
+            }
+
+            StartCoroutine(SpawnWave(spawnTimer));
+        }
+        else
+        {
+            // End game
+
+
+            // Activate FinalScreen Canvas
+            CanvasManager.instance.SetCanvas(3);
+            // Change gameovertext in canvas manager to "u wun!"
+            CanvasManager.instance.gameOverText.text = "u wun!";
+        }
+    }
+
 
     private IEnumerator Timer(float time)
     {

@@ -29,8 +29,9 @@ public class Emily : MonoBehaviour
         // Set the bool isOpen to true on door animator
         door.GetComponent<Animator>().SetTrigger("OpenDoor");
 
+
         // Play the sound
-        //AudioManager.instance.Play("DoorOpen");
+        SoundManager.instance.PlayDoorOpening();
 
         // Wait for door to open
         StartCoroutine(Wait(1.5f));
@@ -52,5 +53,8 @@ public class Emily : MonoBehaviour
 
         // close the door
         door.GetComponent<Animator>().SetTrigger("CloseDoor");
+
+        // Play the sound
+        SoundManager.instance.PlayDoorClosing();
     }
 }
