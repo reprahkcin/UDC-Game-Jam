@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -148,6 +149,12 @@ public class GameManager : MonoBehaviour
         return score;
     }
 
+
+
+    // -------------------------------------------------
+    // Main Game Methods
+    // -------------------------------------------------
+
     public void StartGame()
     {
 
@@ -159,30 +166,31 @@ public class GameManager : MonoBehaviour
 
     }
 
-
-    // -------------------------------------------------
-    // Death Sequence
-    // TODO: Add death sequence
-    // -------------------------------------------------
-
-    // private bool death is over
-    //private bool deathIsOver = false;
-    // Death of Player
-    public void DeathSwarm()
+    // Restart Game
+    public void RestartGame()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-        Debug.Log("Death Swarm!");
-        // if (!deathIsOver)
+        // // Reset score
+        // score = 0;
+
+        // // Reset wave
+        // currentWave = 0;
+
+        // // Find and destroy all enemies
+        // foreach (GameObject enemy in enemies)
         // {
-        //     // spawn 50 enemies without delay
-        //     for (int i = 0; i < 50; i++)
-        //     {
-        //         SpawnWave(0.01f);
-        //     }
+        //     Destroy(enemy);
         // }
-        // deathIsOver = true;
+
+        // // Reset player health
+        // Player.instance.ResetPlayer();
+
+        // // Start game
+        // StartGame();
 
     }
+
     // -------------------------------------------------
     // Timer Functions
     // -------------------------------------------------
@@ -224,8 +232,12 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         // spawn hot dog at item spawn point
+
         Instantiate(itemPrefabs[0], itemSpawnPoint.position, Quaternion.identity);
 
+        // Debug.Log("Hot dog spawned");
+        // Play HotDog sound
+        SoundManager.instance.PlayHotDog();
     }
 
     IEnumerator PickleTimer(float time)
@@ -233,6 +245,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         // spawn pickle at itemSpawnPoint
         Instantiate(itemPrefabs[1], itemSpawnPoint.position, Quaternion.identity);
+
+        // Play pickle sound
+        SoundManager.instance.PlayPickle();
     }
 
     IEnumerator RawDogTimer(float time)
@@ -240,6 +255,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         // spawn raw dog at itemSpawnPoint
         Instantiate(itemPrefabs[2], itemSpawnPoint.position, Quaternion.identity);
+
+        // Debug.Log("Hot dog spawned");
+        // Play HotDog sound
+        SoundManager.instance.PlayHotDog();
     }
 
 

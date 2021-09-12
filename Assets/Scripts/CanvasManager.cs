@@ -24,6 +24,15 @@ public class CanvasManager : MonoBehaviour
     // Emily Icons in order
     public GameObject[] emilyIcons;
 
+    // HotDog details
+    public GameObject hotDogDetails;
+
+    // RawDog details
+    public GameObject rawDogDetails;
+
+    // Pickle details
+    public GameObject pickleDetails;
+
 
     // ------------------------------------------------------------
     // State Variables
@@ -87,6 +96,46 @@ public class CanvasManager : MonoBehaviour
             }
         }
     }
+
+    public void ActivateHotDogDetails()
+    {
+
+        hotDogDetails.SetActive(true);
+        StartCoroutine(ItemDetailsTimer(5f));
+
+
+    }
+
+    public void ActivateRawDogDetails()
+    {
+
+        rawDogDetails.SetActive(true);
+        StartCoroutine(ItemDetailsTimer(5f));
+
+    }
+
+    public void ActivatePickleDetails()
+    {
+        pickleDetails.SetActive(true);
+        StartCoroutine(ItemDetailsTimer(5f));
+    }
+
+    // Item Details Timer
+    IEnumerator ItemDetailsTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Turn off details
+        hotDogDetails.SetActive(false);
+        rawDogDetails.SetActive(false);
+        pickleDetails.SetActive(false);
+
+        //reset stats if needed
+        Player.instance.SetSpeed(5f);
+        Player.instance.SetAttackDamage(15);
+    }
+
+
+
 
     // ------------------------------------------------------------
     // Canvas Control Functions

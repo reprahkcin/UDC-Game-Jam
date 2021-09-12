@@ -45,6 +45,8 @@ public class Emily : MonoBehaviour
 
         GetComponent<Animator>().SetTrigger("Give_Item");
 
+
+
         // wait for animation to finish
         yield return new WaitForSeconds(3);
 

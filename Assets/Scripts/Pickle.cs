@@ -19,6 +19,9 @@ public class Pickle : MonoBehaviour
     }
     void Pickup()
     {
+        // Display the details
+        CanvasManager.instance.ActivatePickleDetails();
+
         // Play Eating sound
         SoundManager.instance.PlayEating();
 

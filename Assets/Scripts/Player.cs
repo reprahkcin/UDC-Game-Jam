@@ -23,6 +23,10 @@ public class Player : MonoBehaviour
     // Animator
     public Animator animator;
 
+
+    // Spawn Point
+    public Transform spawnPoint;
+
     // -------------------------------------------------
     // Stats
     // -------------------------------------------------
@@ -65,6 +69,8 @@ public class Player : MonoBehaviour
 
     }
 
+
+
     // Help Requests
     public int GetHelpRequests()
     {
@@ -76,6 +82,11 @@ public class Player : MonoBehaviour
     public void SetSpeed(float speed)
     {
         moveSpeed = speed;
+    }
+
+    public void SetAttackDamage(int damage)
+    {
+        attackDamage = damage;
     }
 
     public int SetHelpRequests(int newHelpRequests)
@@ -95,6 +106,27 @@ public class Player : MonoBehaviour
     // -------------------------------------------------
     // Interacting with Enemies
     // -------------------------------------------------
+
+    public void ResetPlayer()
+    {
+        // Reset player stats
+        health = maxHealth;
+        isPoisoned = false;
+        isAlive = true;
+        helpRequests = 5;
+
+        // Reset player position
+        transform.position = spawnPoint.position;
+
+        // Reset player animation
+        animator.SetBool("isMoving", false);
+
+        // Set player to simulated
+        GetComponent<Rigidbody2D>().simulated = true;
+
+
+    }
+
 
     public void PoisonPickle()
     {
@@ -211,6 +243,12 @@ public class Player : MonoBehaviour
         // Change the animation to Player_Idle_Down
         animator.SetBool("isMoving", false);
 
+        // Trigger death animation
+        animator.SetTrigger("isDead");
+
+        // Change the sorting order of the player to 1
+        GetComponent<SpriteRenderer>().sortingOrder = 1;
+
         // Stop the theme1 music
         SoundManager.instance.StopTheme1();
 
@@ -224,15 +262,21 @@ public class Player : MonoBehaviour
             isDying = false;
         }
 
+        // Wait for 4 seconds
+        StartCoroutine(DeathTimer());
 
-        // Relase the swarm of rats
-        //gameManager.DeathSwarm();
-
-        //GameManager.instance.DeathSwarm();
 
         // TODO: Death Animation
     }
 
+    IEnumerator DeathTimer()
+    {
+        // Wait for 4 seconds
+        yield return new WaitForSeconds(4f);
+
+        // Load last canvas
+        CanvasManager.instance.SetCanvas(3);
+    }
 
     // -------------------------------------------------
     // Unity Methods
@@ -280,7 +324,18 @@ public class Player : MonoBehaviour
                 weaponAnimator.SetTrigger("Attack");
                 animator.SetTrigger("Attack");
 
+                StartCoroutine(SwingTimer());
+
             }
         }
+    }
+
+    IEnumerator SwingTimer()
+    {
+        // Wait for 0.01 seconds
+        yield return new WaitForSeconds(0.01f);
+
+        // Play shovelSound
+        //SoundManager.instance.PlayShovel();
     }
 }
