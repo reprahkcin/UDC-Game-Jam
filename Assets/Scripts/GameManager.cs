@@ -106,6 +106,11 @@ public class GameManager : MonoBehaviour
                 // Spawn Pickle
                 SpawnPickle();
                 break;
+            case 2:
+                // Spawn Raw Dog
+                SpawnRawDog();
+                break;
+
 
             default:
                 // Spawn Hotdog

@@ -21,6 +21,9 @@ public class CanvasManager : MonoBehaviour
 
     public GameObject healthbarForeground;
 
+    // Emily Icons in order
+    public GameObject[] emilyIcons;
+
     // ------------------------------------------------------------
     // State Variables
     // ------------------------------------------------------------
@@ -38,8 +41,7 @@ public class CanvasManager : MonoBehaviour
     // Get UI Text for score display
     public TextMeshProUGUI scoreText;
 
-    // Hot Dog Text
-    public TextMeshProUGUI hotDogText;
+
 
 
     // ------------------------------------------------------------
@@ -64,12 +66,25 @@ public class CanvasManager : MonoBehaviour
         // Update the score UI
         scoreText.text = "Score: " + score;
     }
-    public void UpdateHelpRequests()
+
+
+    public void UpdateEmilyIcons()
     {
-        // Get Hot Dogs from Player
+        // Get help requests from Player
         int helpReuests = Player.instance.GetHelpRequests();
-        // Update the Help Requests UI Text
-        hotDogText.text = "Help Requests: " + helpReuests;
+
+        // Update Emily Icons
+        for (int i = 0; i < emilyIcons.Length; i++)
+        {
+            if (i < helpReuests)
+            {
+                emilyIcons[i].SetActive(true);
+            }
+            else
+            {
+                emilyIcons[i].SetActive(false);
+            }
+        }
     }
 
     // ------------------------------------------------------------
@@ -177,7 +192,7 @@ public class CanvasManager : MonoBehaviour
         // Update the score
         UpdateScore();
 
-        // Update the help requests count
-        UpdateHelpRequests();
+        // Update Emily Icons
+        UpdateEmilyIcons();
     }
 }

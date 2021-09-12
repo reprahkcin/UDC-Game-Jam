@@ -24,7 +24,10 @@ public class RawDog : MonoBehaviour
         Instantiate(pickupEffect, transform.position, transform.rotation);
 
         // raise health
-        Player.instance.DamagePlayer(-15);
+        Player.instance.AddHealth(15);
+
+        // Raise attack damage
+        Player.instance.attackDamage += 10;
 
         // Temporarily reduce player movement speed
         Player.instance.GetComponent<PlayerMovement>().moveSpeed -= 0.5f;
@@ -42,5 +45,8 @@ public class RawDog : MonoBehaviour
 
         // Restore player movement speed
         Player.instance.GetComponent<PlayerMovement>().moveSpeed += 0.5f;
+
+        // Lower attack damage
+        Player.instance.attackDamage -= 10;
     }
 }

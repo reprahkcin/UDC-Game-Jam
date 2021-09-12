@@ -152,6 +152,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AddHealth(int healthToAdd)
+    {
+        // Add healthToAdd to health
+        health += healthToAdd;
+
+        // If health is more than 100, set it to 100
+        if (health > 100)
+        {
+            health = 100;
+        }
+    }
+
+
     public void DamageFlash()
     {
         // Set Player spriteRenderer color to red
