@@ -226,6 +226,9 @@ public class Rat : MonoBehaviour
             // Take Damage
             TakeDamage(Player.instance.attackDamage);
 
+            // Play Rat Hit Audio
+            SoundManager.instance.PlayShovelHittingRat();
+
             // Hit Timer
             StartCoroutine(HitTimer(0.05f));
         }

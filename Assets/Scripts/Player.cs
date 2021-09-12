@@ -89,11 +89,19 @@ public class Player : MonoBehaviour
         attackDamage = damage;
     }
 
-    public int SetHelpRequests(int newHelpRequests)
+    public void addHelpRequest()
     {
         // Set new help requests
-        return helpRequests = newHelpRequests;
+        helpRequests++;
     }
+
+    // Set help requests
+    public void SetHelpRequests(int requests)
+    {
+        // Set new help requests
+        helpRequests = requests;
+    }
+
 
 
     // Check if player is alive
@@ -336,6 +344,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
 
         // Play shovelSound
-        //SoundManager.instance.PlayShovel();
+        SoundManager.instance.PlayShovel();
     }
 }
