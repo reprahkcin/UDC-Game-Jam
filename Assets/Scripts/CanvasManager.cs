@@ -42,6 +42,8 @@ public class CanvasManager : MonoBehaviour
     // Game Over Text
     public TextMeshProUGUI gameOverText;
 
+    public GameObject introCanvas;
+
 
     // ------------------------------------------------------------
     // State Variables
@@ -235,6 +237,22 @@ public class CanvasManager : MonoBehaviour
 
     void Start()
     {
+
+        // Wait 20 seconds before starting the game
+        StartCoroutine(StartGameTimer(21.0f));
+    }
+
+    IEnumerator StartGameTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Start the game
+
+        // Turn off the intro canvas
+        introCanvas.SetActive(false);
+
+        // Turn on theme music
+        SoundManager.instance.PlayTheme2();
+
         // Deactivate all canvases
         foreach (Canvas canvas in canvases)
         {
@@ -244,12 +262,8 @@ public class CanvasManager : MonoBehaviour
         // Set the current canvas to the currentCanvasIndex
         currentCanvas = canvases[currentCanvasIndex];
 
-        // Play theme2 music
-        SoundManager.instance.PlayTheme2();
-
         // Activate the current canvas
         currentCanvas.gameObject.SetActive(true);
-
     }
 
     void Update()

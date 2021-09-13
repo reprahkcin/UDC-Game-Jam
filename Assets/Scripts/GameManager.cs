@@ -184,24 +184,6 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-        // // Reset score
-        // score = 0;
-
-        // // Reset wave
-        // currentWave = 0;
-
-        // // Find and destroy all enemies
-        // foreach (GameObject enemy in enemies)
-        // {
-        //     Destroy(enemy);
-        // }
-
-        // // Reset player health
-        // Player.instance.ResetPlayer();
-
-        // // Start game
-        // StartGame();
-
     }
 
     // -------------------------------------------------
