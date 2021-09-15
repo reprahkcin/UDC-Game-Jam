@@ -197,6 +197,18 @@ TextureImporter:
   - first:
       213: -4226698733897901277
     second: Title Page
+  - first:
+      213: -8989466210734497663
+    second: Possum_head
+  - first:
+      213: -7125191289149727395
+    second: Possum_Right_Walk
+  - first:
+      213: 5852663593883687546
+    second: Possum_Left_Walk
+  - first:
+      213: 1260501174528941668
+    second: Possum_Intermediate_Walk
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1485,7 +1497,7 @@ TextureImporter:
         width: 270
         height: 227
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1493,6 +1505,90 @@ TextureImporter:
       bones: []
       spriteID: 32b1c6145efb755c0800000000000000
       internalID: -4226698733897901277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Possum_head
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 735
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1802bcc0c100f3380800000000000000
+      internalID: -8989466210734497663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Possum_Right_Walk
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 723
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5dd58df54c3e1d90800000000000000
+      internalID: -7125191289149727395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Possum_Left_Walk
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 691
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7a5c47a786d83150800000000000000
+      internalID: 5852663593883687546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Possum_Intermediate_Walk
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 659
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46e92cac3233e7110800000000000000
+      internalID: 1260501174528941668
       vertices: []
       indices: 
       edges: []
